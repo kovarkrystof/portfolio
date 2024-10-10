@@ -1,0 +1,553 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: #fffffe;
+    --background-secondary-color: #fafafa;
+    --border-color: #ddd;
+    --headline-color: #094067;
+    --paragraph-color: #5f6c7b;
+    --button-color: #3da9fc;
+    --button-text: #fffffe;
+    --hover-color: #0091ff;
+    --burger-color: #333;
+    --box-color: #fffffe;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
+    --img: url('doubleDownArrow.png');
+}
+
+.dark-mode {
+    --background-color: #232946;
+    --background-secondary-color: #232946;
+    --border-color: #010101;
+    --headline-color: #fffffe;
+    --paragraph-color: #94a1b2;
+    --button-color: #3da9fc;
+    --button-text: #fffffe;
+    --hover-color: #0091ff;
+    --burger-color: #fffffe;
+    --box-color: #1d2346;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
+    --img: url('doubleDownArrow1.png');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--paragraph-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.highlight {
+    color: var(--button-color);
+    text-decoration: none;
+}
+
+/* progressBar */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    z-index: 101;
+    width: 100%;
+    background-color: transparent;
+}
+  
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: transparent;
+}
+  
+.progress-bar {
+    height: 0.25em;
+    background: var(--button-color);
+    width: 0%;
+}/* ------------- */
+
+header {
+    background: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrovat obsah */
+    z-index: 200;
+}
+
+.icon-container {
+    position: absolute; /* Oddělení ikony */
+    left: 15px;
+    height: 60px;
+    width: 60px;
+}
+
+#icon {
+    width: 30px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+#icon:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Centrum pro navigaci */
+    flex-grow: 1;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--headline-color);
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: 590;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+
+/* Efekt podtržení (stroke) při hover */
+nav ul li a:after {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;               /* Startovací šířka linky */
+    content: '';
+    background: var(--button-color);      /* Barva linky pod textem */
+    height: 2px;              /* Výška linky */
+    transition: width 0.5s ease;  /* Animace roztažení linky */
+}
+
+nav ul li a:hover:after {
+    width: 100%;              /* Když je hover, roztáhne se přes celý text */
+}
+
+nav ul li a:hover {
+    color: var(--button-color);
+}
+
+/* Hamburger Menu */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--burger-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+section {
+    padding: 60px 0;
+    background-color: var(--background-color);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0;
+    padding: 2em 0;
+    color: var(--headline-color);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero {
+    background-color: var(--background-secondary-color);
+    height: 90vh; /* Výška hero sekce nastavena na 100 % výšky okna */
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px; /* Přizpůsobení pro menší obrazovky */
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: var(--headline-color);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: var(--paragraph-color);
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--button-color);
+    color: var(--button-text);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+#nextSection {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#nextSection:hover {
+    transform: translate(-50%, -2px);
+}
+
+#dynamic-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#dynamic-image p {
+    margin: 0;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#dynamic-image img {
+    margin: 0;
+    width: 20px;
+    transition: transform 0.3s ease;
+}
+
+#nextSection:hover #dynamic-image img,
+#nextSection:active #dynamic-image img {
+    transform: rotate(360deg);
+    transition: transform 0.3s;
+}
+
+
+.about {
+    padding: 60px 0;
+    background-color: var(--background-secondary-color);
+}
+
+.portfolio .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
+    gap: 30px; /* mezera mezi projekty */
+}
+
+.portfolio .project {
+    background-color: var(--box-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.project h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: var(--headline-color);
+}
+
+.project p {
+    margin-bottom: 15px;
+    color: var(--paragraph-color);
+    font-size: 1em;
+}
+
+.project .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: var(--button-color);
+    color: var(--button-text);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.project .btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skills {
+    background-color: var(--background-secondary-color);
+}
+
+.skills ul {
+    list-style: none;
+    text-align: center;
+}
+
+.skills ul li {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--box-color);
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 1.1em;
+    box-shadow: var(--shadow);
+}
+.skills ul li:hover,
+.skills ul li:active {
+    transform: scale(1.09);
+    transition: transform 0.1s ease;
+}
+
+.contact p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--paragraph-color);
+}
+
+.contact ul {
+    list-style: none;
+    text-align: center;
+}
+
+.contact ul li {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.contact ul li a {
+    color: var(--button-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.contact ul li a:after {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '';
+    background: var(--hover-color);
+    height: 1.8px;
+    transition: width 0.5s ease;
+}
+
+.contact ul li a:hover:after {
+    width: 100%;
+}
+
+.contact ul li a:hover {
+    color: var(--hover-color); /* Změní barvu při hoveru */
+}
+
+footer {
+    background-color: var(--background-color);
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--paragraph-color);
+    font-size: 0.9em;
+}
+
+footer .madeby {
+    font-size: 0.8em;
+}
+
+footer .madeby .madebymail {
+    color: var(--paragraph-color);
+    text-decoration: none;
+    padding: 0 2px;
+}
+
+footer .madeby .madebymail:hover,
+footer .madeby .madebymail:active {
+    color: var(--hover-color);
+    border-radius: 15px;
+    transition: color 0.5s;
+}
+
+footer p {
+    margin: 0;
+}
+
+.no-scroll {
+    overflow: hidden; /* Zakáže rolování */
+}
+
+/* scroll up btn */
+.scroll-up-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 9px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
+    display: none; /* Skrýt tlačítko na začátku */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+.scroll-up-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+.scroll-up-btn img {
+    padding: 0;
+    margin: 0;
+    width: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+    }
+
+    /* Navigace */
+    header {
+        height: 60px; /* Sníží výšku navigační lišty */
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Zarovná hamburger a logo do stran */
+    }
+
+    nav ul {
+        display: none;
+        z-index: 101; /* Zajistí, že navigace bude nad hero sekcí */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Upraví polohu dropdown navigace pod horní lištou */
+        left: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        border-top: 1px solid var(--border-color);
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul.nav-active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+        text-align: center;
+        padding: 10px 0; /* Sníží výšku jednotlivých položek v menu */
+    }
+
+    nav ul li a {
+        padding: 12px 0; /* Optimalizace prostoru mezi odkazy */
+        font-size: 1em; /* Mírné zmenšení fontu pro lepší čitelnost */
+    }
+
+    /* Burger menu */
+    .burger {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 15px; /* Lepší zarovnání hamburger ikony na pravé straně */
+        width: 25px; /* Zajistí menší hamburger ikonu */
+    }
+
+    .burger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.toggle .line2 {
+        opacity: 0;
+    }
+
+    .burger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Hero section */
+    .hero {
+        height: 80vh; /* Zmenšení výšky hero sekce */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.2em; /* Upravení velikosti nadpisu */
+    }
+
+    .hero p {
+        font-size: 1em; /* Zmenšení textu pro menší zařízení */
+    }
+
+    /* CTA tlačítko */
+    .cta-btn {
+        padding: 12px 20px; /* Zmenšení tlačítka na mobilních zařízeních */
+        font-size: 1em;
+    }
+
+    /* Ostatní sekce */
+    .about p {
+        text-align: center;
+    }
+
+    .portfolio .container {
+        grid-template-columns: 1fr; /* 1 sloupec na úzkých obrazovkách */
+    }
+
+    /* Ikony */
+    .icon-container {
+        margin: 0; /* Odstraní nadbytečné odsazení kolem ikony */
+    }
+}
+
+
+
