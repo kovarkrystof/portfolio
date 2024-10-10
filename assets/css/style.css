@@ -34,6 +34,14 @@
     --img: url('doubleDownArrow1.png');
 }
 
+/* Definice animace slide-in */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Konečná pozice na obrazovce */
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -227,6 +235,12 @@ section h2 {
     transition: transform 0.3s ease;
 }
 
+.heading{
+    opacity: 0; /* Skrýt blok před animací */
+    transform: translateX(100%); /* Umístíme mimo obrazovku vpravo */
+    animation: slideIn 1s ease-out forwards; /* Spustí animaci */
+}
+
 #nextSection {
     background-color: transparent;
     border: none;
@@ -250,6 +264,10 @@ section h2 {
     flex-direction: column;
     align-items: center;
     gap: 8px;
+
+    opacity: 0; /* Skrýt blok před animací */
+    transform: translateY(150%); /* Umístíme mimo obrazovku vpravo */
+    animation: slideIn 2s ease-out forwards; /* Spustí animaci */
 }
 
 #dynamic-image p {
@@ -548,6 +566,3 @@ footer p {
         margin: 0; /* Odstraní nadbytečné odsazení kolem ikony */
     }
 }
-
-
-
