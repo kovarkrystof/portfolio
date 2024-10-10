@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon.onclick = () => {
         const isDarkMode = document.body.classList.toggle("dark-mode");
         localStorage.setItem("dark-mode", isDarkMode); // Uložit stav do localStorage
-        icon.src = isDarkMode ? "assets/icons/sun.png" : "moon.png";
+        icon.src = isDarkMode ? "sun.png" : "moon.png";
     };
 
     document.getElementById("nextSection").addEventListener("click", () => {
