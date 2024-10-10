@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profesionální tvorba moderních webových stránek na míru. Webový vývojář Kryštof Kovář, zaměřený na HTML, CSS a JavaScript, nabízí responzivní design pro firmy i jednotlivce.">
+    <meta name="keywords" content="tvorba webových stránek, webový vývojář, portfolio, responzivní design, HTML, CSS, JavaScript, front-end vývoj, zakázkový vývoj webů">    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/icons/favicon-16x16.png">
+    <title>Kryštof Kovář | Web developer</title>
+</head>
+<body>
+    <header>
+
+        <div class="scroll-indicator">
+            <div class="progress-container">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="icon-container">
+            <img src="assets/icons/moon.png" id="icon" alt="noční režim ikona"> 
+        </div>
+
+        <div class="container">
+            <nav>
+                <!-- Navigační menu -->
+                <ul class="nav-links">
+                    <li><a href="#about">O&nbsp;mně</a></li>
+                    <li><a href="#skills">Dovednosti</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <!-- Hamburger menu ikona -->
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>      
+    </header>
+    <main>
+
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Tvorba webových stránek na míru</h1>
+                <p>Specializuji se na tvorbu moderních webů na míru, které zaujmou a přivedou nové zákazníky.</p>
+                <a href="#portfolio" class="cta-btn">Prohlédněte si moje portfolio</a>
+
+                <button id="nextSection" aria-label="Zjistit více informací o tvorbě webových stránek">
+                    <div id="dynamic-image">
+                        <p>Zjistit více</p>
+                        <img src="assets/icons/arrow_down.svg" alt="šipka dolů"/>
+                    </div>
+                </button>
+                
+            </div>
+        </section>
+        
+        
+        <section id="about" class="about">
+            <div class="container">
+                <h2>O mně</h2>
+                <p>Ahoj, moje jméno je Kryštof Kovář. Jsem začínající webový vývojář a zároveň student <a class="highlight" href="https://www.spseol.cz/" target="_blank">střední školy</a>. Zaměřuji se na vývoj moderních a responzivních webových stránek. Specializuji se na front-end i back-end vývoj a rád vytvářím projekty, které pomáhají firmám růst.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2>Dovednosti</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <!-- <li>React, Angular</li>
+                    <li>Node.js, Express.js</li>
+                    <li>PHP, Laravel</li>
+                    <li>MySQL, MongoDB</li> -->
+                </ul>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+                        <h2>Portfolio</h2>
+            <div class="container">
+
+                <div class="project">
+                    <h3>EVEDER s.r.o.</h3>
+                    <p>Webová vizitka. Použití HTML a CSS pro jednoduchý a čistý design</p>
+                    <a href="https://www.eveder.cz/" target="_blank" class="btn">Zobrazit web</a>
+                </div>
+
+                <div class="project">
+                    <h3>Fiktivní Kavárna</h3>
+                    <p>Fiktivní webová stránka kavárny. Využívá HTML, CSS a JavaScript k vytvoření přívětivého a moderního designu. (Slouží jako ukázková práce. Lorem ipsum slouží jako výplňový text.)</p>
+                    <a href="portfolio_webs/fiktivnikavarna/index.html" target="_blank" class="btn">Zobrazit web</a>
+                </div>
+                
+
+                <div class="project">
+                    <h3>Na dalších projektech se pracuje...</h3>
+                    <p>Zde najdete popis projektu a technologie, které jsem použil.</p>
+                    <a href="#" class="btn">Zobrazit projekt</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Kontakt</h2>
+                <p>Pokud máte jakékoliv dotazy, zájem o spolupráci a nebo konzultaci, můžete mě kontaktovat prostřednictvím e-mailu:</p>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/8TMjr9dg1TBeciMWA" target="_blank">Olomouc</a></li>
+                    <li><a href="mailto:kovar.krystof@email.cz">kovar.krystof@email.cz</a></li>
+                    <li><a href="tel:603756114">+420 603 756 114</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Všechna práva vyhrazena.</p>
+            <p class="madeby">Web by <a class="madebymail" href="mailto:kovar.krystof@email.cz">kovar.krystof@email.cz</a></p>
+        </div>
+    </footer>
+
+    <button id="scrollUpBtn" class="scroll-up-btn"><img src="assets/icons/arrow.png" alt="UpArrow"></button>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
