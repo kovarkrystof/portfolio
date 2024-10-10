@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function setDarkMode(isDark) {
         if (isDark) {
             document.body.classList.add("dark-mode");
-            icon.src = "assets/icons/sun.png";
+            icon.src = "sun.png";
         } else {
             document.body.classList.remove("dark-mode");
-            icon.src = "assets/icons/moon.png";
+            icon.src = "moon.png";
         }
     }
 
