@@ -87,5 +87,30 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("nextSection").addEventListener("click", () => {
         document.getElementById("about").scrollIntoView({ behavior: "smooth" });
     });
+
     
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    const observer = new IntersectionObserver((entries) => {
+        // biome-ignore lint/complexity/noForEach: <explanation>
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const content = entry.target.querySelector('.content');
+                
+                // Přidání třídy 'visible' s postupným zpožděním
+                const index = Array.from(timelineItems).indexOf(entry.target);
+                content.style.transitionDelay = `${index * 0.3}s`; // Nastavit zpoždění na základě indexu
+                content.classList.add('visible'); // Přidat třídu pro animaci
+
+                observer.unobserve(entry.target); // Přestat sledovat
+            }
+        });
+    }, {
+        threshold: 0.1 // Prvek se považuje za viditelný, když je 10% v zorném poli
+    });
+
+    // biome-ignore lint/complexity/noForEach: <explanation>
+    timelineItems.forEach(item => {
+        observer.observe(item); // Sledovat každou položku
+    });
 });
