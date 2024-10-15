@@ -21,7 +21,11 @@
 
 .dark-mode {
     --background-color: #232946;
+    /* --background-color: #212123; */
+
     --background-secondary-color: #232946;
+    /* --background-secondary-color: #212123; */
+
     --border-color: #010101;
     --headline-color: #fffffe;
     --paragraph-color: #94a1b2;
@@ -52,6 +56,7 @@ body {
     line-height: 1.6;
     color: var(--paragraph-color);
     background-color: var(--background-color);
+    overflow-x: hidden;
 }
 
 .container {
@@ -566,3 +571,76 @@ footer p {
         margin: 0; /* Odstraní nadbytečné odsazení kolem ikony */
     }
 }
+
+@media (max-height: 538px) {
+    #dynamic-image {
+        display: none;
+    }
+}
+
+
+.about {
+    padding: 60px 0;
+    background-color: var(--background-secondary-color);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px; /* Nastavit maximální šířku */
+    margin: 0 auto; /* Vycentrovat */
+    padding: 20px 0; /* Odsazení kolem */
+}
+
+/* Styl pro jednotlivé položky časové osy */
+.timeline-item {
+    position: relative; /* Pozice pro pseudo-elementy */
+    margin: 20px 0; /* Mezery mezi jednotlivými položkami */
+    display: flex; /* Flexbox pro zarovnání teček a obsahu */
+    align-items: center; /* Vertikální zarovnání */
+}
+
+/* Styl pro tečky */
+.circle {
+    width: 20px; /* Průměr tečky */
+    height: 20px; /* Průměr tečky */
+    background-color: var(--button-color); /* Barva tečky */
+    border-radius: 50%; /* Zaoblené hrany */
+    position: absolute; /* Umístění tečky */
+    left: calc(50% - 10px); /* Centrovat tečku na lince */
+    top: 0; /* Umístění tečky na vrchol */
+    z-index: 1; /* Zajistit, aby byla tečka nad čarou */
+}
+
+/* Styl pro obsah vedle tečky */
+.content {
+    padding-left: 40px; /* Odsazení pro text od tečky */
+    padding-right: 20px;
+    padding: 5px 10px 5px 40px;
+    background-color: var(--box-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    opacity: 0; /* Skrytí před animací */
+    transform: translateY(20px); /* Posun dolů pro animaci */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Přechod pro animaci */
+}
+
+/* Viditelný stav po skrolování */
+.content.visible {
+    opacity: 1; /* Zobrazit */
+    transform: translateY(0); /* Vrať se na výchozí pozici */
+}
+
+/* Vytvoření čáry časové osy */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; /* Začátek čáry na vrcholu */
+    height: 100%; /* Výška čáry */
+    width: 2px; /* Šířka čáry */
+    background-color: var(--border-color); /* Barva čáry */
+    transform: translateX(-50%); /* Vycentrování čáry */
+    z-index: 0; /* Zajistit, aby byla čára pod obsahem */
+}
+
+
