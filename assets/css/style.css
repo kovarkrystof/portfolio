@@ -38,14 +38,6 @@
     --img: url('doubleDownArrow1.png');
 }
 
-/* Definice animace slide-in */
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0); /* Konečná pozice na obrazovce */
-    }
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -300,6 +292,69 @@ section h2 {
     background-color: var(--background-secondary-color);
 }
 
+.timeline {
+    position: relative;
+    max-width: 800px; /* Nastavit maximální šířku */
+    margin: 0 auto; /* Vycentrovat */
+    padding: 20px 0; /* Odsazení kolem */
+}
+
+/* Styl pro jednotlivé položky časové osy */
+.timeline-item {
+    position: relative; /* Pozice pro pseudo-elementy */
+    margin: 20px 0; /* Mezery mezi jednotlivými položkami */
+    display: flex; /* Flexbox pro zarovnání teček a obsahu */
+    align-items: center; /* Vertikální zarovnání */
+}
+
+/* Styl pro tečky */
+.circle {
+    width: 20px; /* Průměr tečky */
+    height: 20px; /* Průměr tečky */
+    background-color: var(--button-color); /* Barva tečky */
+    border-radius: 50%; /* Zaoblené hrany */
+    position: absolute; /* Umístění tečky */
+    left: calc(50% - 10px); /* Centrovat tečku na lince */
+    top: 0; /* Umístění tečky na vrchol */
+    z-index: 1; /* Zajistit, aby byla tečka nad čarou */
+}
+
+/* Styl pro obsah vedle tečky */
+.content {
+    padding-left: 40px; /* Odsazení pro text od tečky */
+    padding-right: 20px;
+    padding: 5px 30px 5px 40px;
+    background-color: var(--box-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    opacity: 0; /* Skrytí před animací */
+    transform: translateY(20px); /* Posun dolů pro animaci */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Přechod pro animaci */
+}
+
+/* Viditelný stav po skrolování */
+.content.visible {
+    opacity: 1; /* Zobrazit */
+    transform: translateY(0); /* Vrať se na výchozí pozici */
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; /* Začátek čáry na vrcholu */
+    height: 100%; /* Výška čáry */
+    width: 2px; /* Šířka čáry */
+    background-color: var(--border-color); /* Barva čáry */
+    transform: translateX(-50%); /* Vycentrování čáry */
+    z-index: 0; /* Zajistit, aby byla čára pod obsahem */
+}
+
+
+.portfolio {
+    background-color: var(--background-secondary-color);
+}
+
 .portfolio .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
@@ -347,13 +402,18 @@ section h2 {
     background-color: var(--background-secondary-color);
 }
 
+.skills h2 {
+padding: 0.5em;
+}
+
 .skills ul {
     list-style: none;
     text-align: center;
 }
 
 .skills ul li {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 10px 15px;
     background-color: var(--box-color);
     border-radius: 5px;
@@ -367,49 +427,13 @@ section h2 {
     transition: transform 0.1s ease;
 }
 
-.contact p {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--paragraph-color);
+.skills-icon {
+    width: 20px;
+    margin: 1px;
+    margin-right: 5px;
 }
 
-.contact ul {
-    list-style: none;
-    text-align: center;
-}
 
-.contact ul li {
-    margin-bottom: 15px;
-    font-size: 1.2em;
-}
-
-.contact ul li a {
-    color: var(--button-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.contact ul li a:after {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: '';
-    background: var(--hover-color);
-    height: 1.8px;
-    transition: width 0.5s ease;
-}
-
-.contact ul li a:hover:after {
-    width: 100%;
-}
-
-.contact ul li a:hover {
-    color: var(--hover-color); /* Změní barvu při hoveru */
-}
 
 footer {
     background-color: var(--background-color);
@@ -420,26 +444,139 @@ footer {
     font-size: 0.9em;
 }
 
-footer .madeby {
-    font-size: 0.8em;
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrovat obsah v patičce */
+    gap: 30px; /* Mezery mezi jednotlivými prvky */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-footer .madeby .madebymail {
-    color: var(--paragraph-color);
-    text-decoration: none;
-    padding: 0 2px;
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Mezera mezi boxy */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Přidá odsazení kolem celého containeru */
+    flex-wrap: wrap; /* Umožní přizpůsobení boxů na menších obrazovkách */
 }
 
-footer .madeby .madebymail:hover,
-footer .madeby .madebymail:active {
-    color: var(--hover-color);
-    border-radius: 15px;
-    transition: color 0.5s;
+.contact h2 {
+    padding: 0.5em 0;
 }
 
-footer p {
+.contact-box {
+    flex: 1; /* Zajistí, že boxy se rovnoměrně rozdělí */
+    min-width: 250px; /* Nastaví minimální šířku, aby byly boxy čitelné */
+    max-width: 350px; /* Nastaví maximální šířku, aby nebyly příliš široké */
+    display: flex;
+    align-items: center;
+    background-color: var(--box-color);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    margin: 10px; /* Přidá odsazení kolem každého boxu */
+}
+
+.contact-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--button-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text);
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.contact-icon img {
+    width: 60%;
+}
+
+.contact-content {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.contact-content h3 {
     margin: 0;
+    color: var(--headline-color);
+    font-size: 1.2em;
 }
+
+.contact-content p {
+    margin: 5px 0;
+    color: var(--paragraph-color);
+}
+
+.contact-content a {
+    color: var(--button-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-content a:hover {
+    color: var(--hover-color);
+}
+
+
+.theme-toggle-btn {
+    background: linear-gradient(135deg, var(--button-color), var(--hover-color));
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text);
+    font-size: 1.2em;
+    position: relative; /* Umožní další efekty */
+    overflow: hidden;
+    margin: 20px 0; /* Odsazení od ostatních prvků */
+}
+
+.theme-toggle-btn:hover {
+    background: linear-gradient(135deg, var(--hover-color), var(--button-color));
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Styl pro ikonu uvnitř tlačítka */
+.theme-toggle-btn img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+
+.dark-mode .theme-toggle-btn img {
+    transform: rotate(180deg);
+}
+
+
 
 .no-scroll {
     overflow: hidden; /* Zakáže rolování */
@@ -476,6 +613,10 @@ footer p {
 @media (max-width: 768px) {
     .container {
         width: 80%;
+    }
+
+    section h2 {
+        padding: 0.8em 0;
     }
 
     /* Navigace */
@@ -570,6 +711,18 @@ footer p {
     .icon-container {
         margin: 0; /* Odstraní nadbytečné odsazení kolem ikony */
     }
+
+    .contact-container {
+        justify-content: center; /* Vycentruje boxy */
+        flex-direction: column; /* Uspořádá boxy pod sebe */
+        padding: 20px; /* Zachová odsazení kolem */
+    }
+
+    .contact-box {
+        width: 80%; /* Zachová šířku boxů na mobilních zařízeních */
+        max-width: 500px; /* Nastaví maximální šířku, aby se nezvětšovaly příliš */
+        margin: 10px auto; /* Vycentruje boxy na menších obrazovkách */
+    }
 }
 
 @media (max-height: 538px) {
@@ -579,68 +732,76 @@ footer p {
 }
 
 
-.about {
-    padding: 60px 0;
-    background-color: var(--background-secondary-color);
+
+/* Definice animace slide-in */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Konečná pozice na obrazovce */
+    }
 }
 
-.timeline {
-    position: relative;
-    max-width: 800px; /* Nastavit maximální šířku */
-    margin: 0 auto; /* Vycentrovat */
-    padding: 20px 0; /* Odsazení kolem */
+/* Slide-up animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Styl pro jednotlivé položky časové osy */
-.timeline-item {
-    position: relative; /* Pozice pro pseudo-elementy */
-    margin: 20px 0; /* Mezery mezi jednotlivými položkami */
-    display: flex; /* Flexbox pro zarovnání teček a obsahu */
-    align-items: center; /* Vertikální zarovnání */
+.slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
-/* Styl pro tečky */
-.circle {
-    width: 20px; /* Průměr tečky */
-    height: 20px; /* Průměr tečky */
-    background-color: var(--button-color); /* Barva tečky */
-    border-radius: 50%; /* Zaoblené hrany */
-    position: absolute; /* Umístění tečky */
-    left: calc(50% - 10px); /* Centrovat tečku na lince */
-    top: 0; /* Umístění tečky na vrchol */
-    z-index: 1; /* Zajistit, aby byla tečka nad čarou */
+.slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Styl pro obsah vedle tečky */
-.content {
-    padding-left: 40px; /* Odsazení pro text od tečky */
-    padding-right: 20px;
-    padding: 5px 10px 5px 40px;
-    background-color: var(--box-color);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    opacity: 0; /* Skrytí před animací */
-    transform: translateY(20px); /* Posun dolů pro animaci */
-    transition: opacity 0.6s ease, transform 0.6s ease; /* Přechod pro animaci */
-}
-
-/* Viditelný stav po skrolování */
-.content.visible {
-    opacity: 1; /* Zobrazit */
-    transform: translateY(0); /* Vrať se na výchozí pozici */
-}
-
-/* Vytvoření čáry časové osy */
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0; /* Začátek čáry na vrcholu */
-    height: 100%; /* Výška čáry */
-    width: 2px; /* Šířka čáry */
-    background-color: var(--border-color); /* Barva čáry */
-    transform: translateX(-50%); /* Vycentrování čáry */
-    z-index: 0; /* Zajistit, aby byla čára pod obsahem */
+/* Zoom-in animation */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.zoom-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Definice animace fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Začíná mírně posunutý dolů */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Na konci je na původní pozici */
+    }
+}
+
+/* Třída pro animaci */
+.fade-in {
+    opacity: 0; /* Skryté před animací */
+    animation: fadeIn 0.5s ease forwards; /* Spustí animaci */
+}
