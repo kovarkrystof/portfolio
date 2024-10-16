@@ -18,10 +18,6 @@
             </div>
         </div>
 
-        <div class="icon-container">
-            <img src="assets/icons/moon.png" id="icon" alt="noční režim ikona"> 
-        </div>
-
         <div class="container">
             <nav>
                 <!-- Navigační menu -->
@@ -60,10 +56,10 @@
             </div>
         </section>
 
-        <section id="about" class="about">
+        <section id="about" class="about fade-in">
             <div class="container">
-                <h2>O mně</h2>
-                <p>Ahoj, moje jméno je Kryštof Kovář. Jsem začínající webový vývojář a zároveň student <a class="highlight" href="https://www.spseol.cz/" target="_blank">střední školy</a>. Zaměřuji se na vývoj moderních a responzivních webových stránek. Specializuji se na front-end i back-end vývoj a rád vytvářím projekty, které pomáhají firmám růst.</p>        
+                <h2 class="slide-up">O mně</h2>
+                <p class="fade-in">Ahoj, moje jméno je Kryštof Kovář. Jsem začínající webový vývojář a zároveň student <a class="highlight" href="https://www.spseol.cz/" target="_blank">střední školy</a>. Zaměřuji se na vývoj moderních a responzivních webových stránek. Specializuji se na front-end i back-end vývoj a rád vytvářím projekty, které pomáhají firmám růst.</p>        
                 <div class="timeline">
                     <div class="timeline-item fade-in">
                         <div class="circle"></div>
@@ -99,11 +95,11 @@
 
         <section id="skills" class="skills">
             <div class="container">
-                <h2>Dovednosti</h2>
+                <h2 class="slide-up">Dovednosti</h2>
                 <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
+                    <li class="zoom-in"><img class="skills-icon" src="assets/icons/html-icon.png" alt="HTML ikona">HTML</li>
+                    <li class="zoom-in"><img class="skills-icon" src="assets/icons/css-icon.png" alt="CSS ikona">CSS</li>
+                    <li class="zoom-in"><img class="skills-icon" src="assets/icons/js-icon.png" alt="JavaScript ikona">JavaScript</li>
                     <!-- <li>React, Angular</li>
                     <li>Node.js, Express.js</li>
                     <li>PHP, Laravel</li>
@@ -112,24 +108,24 @@
             </div>
         </section>
 
-        <section id="portfolio" class="portfolio">
+        <section id="portfolio" class="portfolio slide-up">
                         <h2>Portfolio</h2>
             <div class="container">
 
-                <div class="project">
+                <div class="project zoom-in">
                     <h3>EVEDER s.r.o.</h3>
                     <p>Webová vizitka. Použití HTML a CSS pro jednoduchý a čistý design</p>
                     <a href="https://www.eveder.cz/" target="_blank" class="btn">Zobrazit web</a>
                 </div>
 
-                <div class="project">
+                <div class="project zoom-in">
                     <h3>Fiktivní Kavárna</h3>
                     <p>Fiktivní webová stránka kavárny. Využívá HTML, CSS a JavaScript k vytvoření přívětivého a moderního designu. (Slouží jako ukázková práce. Lorem ipsum slouží jako výplňový text.)</p>
                     <a href="webs/fiktivnikavarna/index.html" target="_blank" class="btn">Zobrazit web</a>
                 </div>
                 
 
-                <div class="project">
+                <div class="project zoom-in">
                     <h3>Na dalších projektech se pracuje...</h3>
                     <p>Zde najdete popis projektu a technologie, které jsem použil.</p>
                     <a class="btn">Zobrazit projekt</a>
@@ -138,27 +134,56 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Kontakt</h2>
-                <p>Pokud máte jakékoliv dotazy, zájem o spolupráci a nebo konzultaci, můžete mě kontaktovat prostřednictvím e-mailu:</p>
-                <ul>
-                    <li><a href="https://maps.app.goo.gl/8TMjr9dg1TBeciMWA" target="_blank">Olomouc</a></li>
-                    <li><a href="mailto:kovar.krystof@email.cz">kovar.krystof@email.cz</a></li>
-                    <li><a href="tel:603756114">+420 603 756 114</a></li>
-                </ul>
-            </div>
-        </section>
-
     </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Všechna práva vyhrazena.</p>
-            <p class="madeby">Web by <a class="madebymail" href="mailto:kovar.krystof@email.cz">kovar.krystof@email.cz</a></p>
+    <footer class="footer">
+        <div class="footer-container">
+            <section class="contact" id="contact">
+                <h2>Kontakt</h2>
+                <div class="contact-container">
+                    <div class="contact-box zoom-in">
+                        <div class="contact-icon">
+                            <img src="assets/icons/placeholder.png" alt="">
+                        </div>
+                        <div class="contact-content">
+                            <h3>Lokace</h3>
+                            <p><a href="https://maps.app.goo.gl/8TMjr9dg1TBeciMWA" target="_blank">Olomouc</a></p>
+                        </div>
+                    </div>
+        
+                    <div class="contact-box zoom-in">
+                        <div class="contact-icon">
+                            <img src="assets/icons/arroba.png" alt="">
+                        </div>
+                        <div class="contact-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:kovar.krystof@email.cz">kovar.krystof@email.cz</a></p>
+                        </div>
+                    </div>
+        
+                    <div class="contact-box zoom-in">
+                        <div class="contact-icon">
+                            <img src="assets/icons/telephone.png" alt="">
+                        </div>
+                        <div class="contact-content">
+                            <h3>Telefon</h3>
+                            <p><a href="tel:603756114">+420 603 756 114</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tlačítko pro přepínání tmavého režimu -->
+            <button class="theme-toggle-btn" id="themeToggle">
+                <img src="assets/icons/moon.png" id="icon" alt="přepínač barevného režimu">
+            </button>
+    
+            <p>&copy; 2024 Všechna práva vyhrazena. Web by Kryštof Kovář</p>
         </div>
     </footer>
+    
+    
 
-    <button id="scrollUpBtn" class="scroll-up-btn"><img src="assets/icons/arrow.png" alt="UpArrow"></button>
+    <button id="scrollUpBtn" class="scroll-up-btn zoom-in"><img src="assets/icons/arrow.png" alt="UpArrow"></button>
 
     <script src="assets/js/script.js"></script>
 </body>
