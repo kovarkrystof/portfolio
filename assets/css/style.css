@@ -490,8 +490,8 @@ footer {
 }
 
 .contact-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px; /* Nastaví šířku na 30px */
+    height: 40px; /* Nastaví výšku na 30px */
     background-color: var(--button-color);
     border-radius: 50%;
     display: flex;
@@ -503,7 +503,8 @@ footer {
 }
 
 .contact-icon img {
-    width: 60%;
+    width: 50%; /* Obrázek se přizpůsobí šířce rodičovského prvku */
+    height: 50%; /* Obrázek se přizpůsobí výšce rodičovského prvku */
 }
 
 .contact-content {
@@ -752,6 +753,10 @@ footer {
         transform: translateY(0);
     }
 }
+
+
+
+
 
 .slide-up {
     opacity: 0;
