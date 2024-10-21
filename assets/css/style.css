@@ -24,7 +24,7 @@
     /* --background-color: #212123; */
 
     --background-secondary-color: #232946;
-    /* --background-secondary-color: #212123; */
+    /* --background-secondary-color: #262627; */
 
     --border-color: #010101;
     --headline-color: #fffffe;
@@ -91,24 +91,6 @@ header {
     align-items: center;
     justify-content: center; /* Centrovat obsah */
     z-index: 200;
-}
-
-.icon-container {
-    position: absolute; /* Oddělení ikony */
-    left: 15px;
-    height: 60px;
-    width: 60px;
-}
-
-#icon {
-    width: 30px;
-    cursor: pointer;
-    margin: 15px;
-}
-
-#icon:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s;
 }
 
 nav {
@@ -204,9 +186,9 @@ section h2 {
 }
 
 .hero h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     color: var(--headline-color);
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 .hero p {
@@ -290,6 +272,10 @@ section h2 {
 .about {
     padding: 60px 0;
     background-color: var(--background-secondary-color);
+}
+
+.about p {
+    margin: 15px 0;
 }
 
 .timeline {
@@ -573,10 +559,6 @@ footer {
     transition: transform 0.3s ease;
 }
 
-.dark-mode .theme-toggle-btn img {
-    transform: rotate(180deg);
-}
-
 
 
 .no-scroll {
@@ -686,7 +668,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 2.2em; /* Upravení velikosti nadpisu */
+        font-size: 2em; /* Upravení velikosti nadpisu */
     }
 
     .hero p {
