@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav ul li a');
     const scrollUpBtn = document.getElementById("scrollUpBtn");
     const icon = document.getElementById("icon");
+    const themeToggleBtn = document.getElementById("themeToggle");
     const nextSectionBtn = document.getElementById("nextSection");
     const progressBar = document.getElementById("progressBar");
 
@@ -63,8 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkMode = localStorage.getItem("dark-mode") === "true";
     setDarkMode(darkMode);
 
-    if (icon) {
-        icon.addEventListener('click', () => {
+    // Změněno na themeToggleBtn
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
             const isDarkMode = document.body.classList.toggle("dark-mode");
             localStorage.setItem("dark-mode", isDarkMode);
             icon.src = isDarkMode ? "assets/icons/sun.png" : "assets/icons/moon.png";
