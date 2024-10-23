@@ -274,6 +274,10 @@ section h2 {
     background-color: var(--background-secondary-color);
 }
 
+.about h2 {
+    padding: 25px;
+}
+
 .about p {
     margin: 15px 0;
 }
@@ -522,7 +526,7 @@ footer {
 
 
 .theme-toggle-btn {
-    background: linear-gradient(135deg, var(--button-color), var(--hover-color));
+    background-color: var(--button-color);
     border: none;
     border-radius: 50%;
     padding: 10px;
@@ -542,7 +546,6 @@ footer {
 }
 
 .theme-toggle-btn:hover {
-    background: linear-gradient(135deg, var(--hover-color), var(--button-color));
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
@@ -792,3 +795,8 @@ footer {
     opacity: 0; /* Skryté před animací */
     animation: fadeIn 0.5s ease forwards; /* Spustí animaci */
 }
+
+
+
+
+
