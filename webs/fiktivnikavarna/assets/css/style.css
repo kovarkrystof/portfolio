@@ -435,29 +435,39 @@ footer{
     padding: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+}
 .menu h1 { 
     text-align: center;
     margin: 2%;
     color: #333;
- }
+}
 .menu h2 {
     padding: 1%;
- }
+}
 .menu-section { 
     margin-bottom: 30px;
- }
-.menu-section h2 { color: #888;
+}
+.menu-section h2 { 
+    color: #888;
     font-size: 1.5em;
-    }
+}
 .menu-item { 
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Zarovnání obsahu vertikálně */
     margin-bottom: 10px;
-    }
+    padding: 10px; /* Přidáno pro lepší klikatelnost */
+    transition: background-color 0.3s, transform 0.3s; /* Plynulý přechod */
+    border-radius: 5px; /* Zaoblení rohů */
+}
+.menu-item:hover {
+    background-color: #f0f0f0; /* Pozadí při hoveru */
+    transform: scale(1.02); /* Mírné zvětšení při hoveru */
+}
 .menu-item p { 
     margin: 0;
- }
+    flex-grow: 1; /* Přidáno pro flexibilní šířku */
+}
 .description {
     font-size: 0.8em;
     color: rgba(0, 0, 0, 0.688);
@@ -465,13 +475,10 @@ footer{
 .price { 
     font-weight: bold;
     font-size: 0.8em;
- }
+    text-align: right; /* Zarovnání ceny doprava */
+}
 
- @media (max-width: 768px){
-
-
- }
- .arrow-back {
+.arrow-back {
     position: fixed;
     margin: 2%;
     z-index: 99;
@@ -484,13 +491,40 @@ footer{
     cursor: pointer;
     padding: 13px;
     border-radius: 15px;
-
     height: 45px;
     width: 45px;
 }
 .arrow-back img {
     width: 15px;
 }
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) { /* Pro menší obrazovky */
+    #menu {
+        padding-top: 12%;
+        padding-bottom: 0%;
+        width: 100%;
+        margin: 0;
+        min-height: none;
+        background-color: white;
+    }
+    .menu {
+        min-height: 100vh;
+    }
+}
+
 
 
 
@@ -684,16 +718,5 @@ footer{
         width: 100%; /* Šířka 100 % na menších zařízeních */
     }
 
-    #menu {
-        padding-top: 12%;
-        padding-bottom: 0%;
-        width: 100%;
-        margin: 0;
-        min-height: none;
-        
-        background-color: white;
-    }
-    .menu {
-        min-height: 100vh;
-    }
+
 }
