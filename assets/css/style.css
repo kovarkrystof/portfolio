@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
+
 
 :root {
     --background-color: #fffffe;
@@ -16,7 +18,6 @@
     --burger-color: #333;
     --box-color: #fffffe;
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
-    --img: url('doubleDownArrow.png');
 }
 
 .dark-mode {
@@ -35,7 +36,6 @@
     --burger-color: #fffffe;
     --box-color: #1d2346;
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
-    --img: url('doubleDownArrow1.png');
 }
 
 html {
@@ -43,7 +43,6 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: var(--paragraph-color);
@@ -58,8 +57,9 @@ body {
 }
 
 .highlight {
-    color: var(--button-color);
+    color: #3da9fc;
     text-decoration: none;
+    font-weight: bold; /* Zvýraznění textu tučným písmem */
 }
 
 /* progressBar */
@@ -215,9 +215,8 @@ section h2 {
 }
 
 .heading{
-    opacity: 0; /* Skrýt blok před animací */
-    transform: translateX(100%); /* Umístíme mimo obrazovku vpravo */
-    animation: slideIn 1s ease-out forwards; /* Spustí animaci */
+    transform: scale(0.3); /* Zmenšení na polovinu */
+    animation: growIn 2s ease-out forwards; /* Spustí animaci zvětšení */
 }
 
 #nextSection {
@@ -243,11 +242,19 @@ section h2 {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-
-    opacity: 0; /* Skrýt blok před animací */
-    transform: translateY(150%); /* Umístíme mimo obrazovku vpravo */
-    animation: slideIn 2s ease-out forwards; /* Spustí animaci */
 }
+
+@keyframes growIn {
+    0% {
+        opacity: 0; /* Neviditelný na začátku */
+        transform: scale(0.5); /* Začíná zmenšený */
+    }
+    100% {
+        opacity: 1; /* Plná viditelnost */
+        transform: scale(1); /* Vrátí se na normální velikost */
+    }
+}
+
 
 #dynamic-image p {
     margin: 0;
@@ -264,7 +271,7 @@ section h2 {
 
 #nextSection:hover #dynamic-image img,
 #nextSection:active #dynamic-image img {
-    transform: rotate(360deg);
+
     transition: transform 0.3s;
 }
 
@@ -311,8 +318,6 @@ section h2 {
 
 /* Styl pro obsah vedle tečky */
 .content {
-    padding-left: 40px; /* Odsazení pro text od tečky */
-    padding-right: 20px;
     padding: 5px 30px 5px 40px;
     background-color: var(--box-color);
     border-radius: 10px;
@@ -427,102 +432,158 @@ padding: 0.5em;
 
 footer {
     background-color: var(--background-color);
-    padding: 15px 0;
+    padding: 20px 0 0 0;
     border-top: 1px solid var(--border-color);
-    text-align: center;
     color: var(--paragraph-color);
     font-size: 0.9em;
 }
 
 .footer-container {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrovat obsah v patičce */
-    gap: 30px; /* Mezery mezi jednotlivými prvky */
-    width: 90%;
+    justify-content: center; /* Vycentrování obou sloupců */
+    align-items: center; /* Vertikální zarovnání */
+    gap: 20px; /* Mezery mezi sloupci */
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Umožní přechod na novou řadu na menších obrazovkách */
 }
 
-.contact-container {
+.footer-box {
+    flex: 1 1 calc(50% - 20px); /* Umožní sloupcům růst rovnoměrně */
+    min-width: 250px; /* Minimální šířka sloupců */
+    text-align: center; /* Zarovnání textu na střed */
+}
+
+.footer-box h2 {
+    color: var(--headline-color);
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Mezera mezi boxy */
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px; /* Přidá odsazení kolem celého containeru */
-    flex-wrap: wrap; /* Umožní přizpůsobení boxů na menších obrazovkách */
+    flex-direction: column; /* Zarovnání položek pod sebou */
+    align-items: center; /* Vycentrování položek */
+    gap: 15px; /* Mezery mezi položkami */
 }
 
-.contact h2 {
-    padding: 0.5em 0;
-}
-
-.contact-box {
-    flex: 1; /* Zajistí, že boxy se rovnoměrně rozdělí */
-    min-width: 250px; /* Nastaví minimální šířku, aby byly boxy čitelné */
-    max-width: 350px; /* Nastaví maximální šířku, aby nebyly příliš široké */
+.footer-box ul li {
     display: flex;
     align-items: center;
-    background-color: var(--box-color);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    margin: 10px; /* Přidá odsazení kolem každého boxu */
-}
-
-.contact-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    justify-content: center; /* Horizontální vycentrování položek */
+    margin-bottom: 10px;
+    opacity: 0; /* Skrytí při načítání pro animaci */
+    animation: fadeIn 1s ease forwards; /* Animace načítání */
+    animation-delay: 0.2s; /* Zpoždění pro každou ikonu, aby se objevily postupně */
 }
 
 .contact-icon {
-    width: 40px; /* Nastaví šířku na 30px */
-    height: 40px; /* Nastaví výšku na 30px */
-    background-color: var(--button-color);
+    width: 35px;
+    height: 35px;
+    background-color: #3da9fc; /* Barva pozadí pro ikony */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--button-text);
-    font-size: 1.5em;
     margin-right: 15px;
 }
 
-.contact-icon img {
-    width: 50%; /* Obrázek se přizpůsobí šířce rodičovského prvku */
-    height: 50%; /* Obrázek se přizpůsobí výšce rodičovského prvku */
-}
-
-.contact-content {
-    text-align: left;
-    flex-grow: 1;
-}
-
-.contact-content h3 {
-    margin: 0;
-    color: var(--headline-color);
-    font-size: 1.2em;
-}
-
-.contact-content p {
-    margin: 5px 0;
-    color: var(--paragraph-color);
+.contact-icon i {
+    font-size: 15px; /* Nastavení velikosti ikon */
+    color: #fff; /* Barva ikon */
+    transition: color 0.3s ease; /* Efekt změny barvy při hover */
 }
 
 .contact-content a {
-    color: var(--button-color);
+    color: var(--headline-color);
     text-decoration: none;
-    font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .contact-content a:hover {
-    color: var(--hover-color);
+    color: #3da9fc;
 }
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Odkazy pod sebou */
+    align-items: center;
+    gap: 5px; /* Zmenšená mezera mezi odkazy */
+}
+
+.footer-nav ul li {
+    margin: 0; /* Odstranění mezery mezi řádky */
+    padding: 5px 0; /* Mírné zmenšení vertikálního odsazení */
+}
+
+.footer-nav ul li a {
+    color: var(--headline-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1em; /* Mírně menší velikost písma */
+}
+
+.footer-nav ul li a:hover {
+    color: var(--button-color);
+}
+
+
+.footer-bottom {
+    display: flex;
+    justify-content: center; /* Horizontální vycentrování */
+    align-items: center; /* Vertikální vycentrování */
+    font-size: 1em;
+    color: var(--paragraph-color);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0; /* Odstranění mezery kolem textu */
+}
+
+
+/* Animace pro načítání ikon */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Ikony začínají trochu níž */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Ikony se dostanou na původní pozici */
+    }
+}
+
+/* Responsivní styly pro menší zařízení */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center; /* Vycentrování všech sloupců pod sebou */
+    }
+
+    .footer-box {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .footer-nav ul li {
+        margin-bottom: 5px;
+    }
+}
+
+
+
+
+
 
 
 .theme-toggle-btn {
@@ -799,4 +860,160 @@ footer {
 
 
 
+.benefits-wrap {
+    flex-direction: column;
+    display: flex;
+    padding: 20px;
+}
 
+.benefits-wrap h2 {
+    padding-bottom: 13px;
+}
+
+.benefits-wrap p {
+    text-align: center;
+}
+
+.benefits {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr); /* Tři sloupce pro desktop */
+    gap: 20px;
+    max-width: 1200px;
+}
+
+.benefit {
+    background-color: #fffffe;
+    padding: 30px; /* Zvýšení paddingu pro benefit bloky */
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Přidán efekt pro stín */
+    opacity: 0; /* Inicializace opacity pro animaci */
+    transform: translateY(20px); /* Posun pro animaci */
+    text-align: center; /* Vycentrování textu a ikon */
+    margin: 10px; /* Přidání marginu mezi jednotlivými bloky */
+}
+
+.benefit.visible {
+    opacity: 1; /* Viditelnost při aktivaci třídy */
+    transform: translateY(0); /* Vrátí se na původní pozici */
+}
+
+.benefit h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #094067;
+}
+
+.benefit-header {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #094067;
+    margin-bottom: 20px;
+}
+
+.benefit p {
+    font-size: 1rem;
+    color: #5f6c7b;
+}
+
+/* Ikony */
+.icon {
+    font-size: 2.5rem; /* Velikost ikony */
+    margin-bottom: 10px; /* Mezera pod ikonou */
+}
+
+.benefit:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Zvýšení stínu při hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* Responsivní design pro mobilní zařízení */
+@media (max-width: 768px) {
+    .benefits {
+        grid-template-columns: 1fr; /* Jediný sloupec pro menší obrazovky */
+    }
+}
+
+.faq-wrap {
+    padding: 20px;
+}
+
+.faq-wrap h2 {
+    padding-bottom: 13px;
+}
+
+.faq-wrap p {
+    text-align: center;
+}
+
+.faq {
+    width: 100%;
+    max-width: 800px; /* Maximální šířka pro FAQ sekci */
+    margin: 40px auto; /* Centrování sekce FAQ */
+    padding: 20px; /* Padding pro celou sekci */
+}
+
+.faq p {
+    font-size: 1rem;
+    color: #5f6c7b;
+    max-width: 600px;
+    padding: 10px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Nastavení šířky na 100% */
+}
+
+.faq-question {
+    display: flex;
+    padding: 3px;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: bold; /* Zvýraznění otázky */
+    color: #094067; /* Barva textu pro otázky */
+    width: 100%; /* Šířka otázky přes celý blok */
+}
+
+.faq-answer {
+    display: none;
+    padding-top: 5px;
+    color: #5f6c7b; /* Barva textu pro odpovědi */
+    opacity: 0; /* Inicializace opacity pro animaci */
+    transform: translateY(-10px); /* Posun pro animaci */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Přidání přechodu pro opacity a transformaci */
+    text-align: justify;
+    max-width: 100%; /* Roztažení odpovědi přes celý blok */
+}
+
+.faq-answer p {
+    text-align: justify;
+    margin: 0; /* Nastaví odsazení na 0 pro správné zarovnání */
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+    opacity: 1; /* Zviditelnění odpovědi */
+    transform: translateY(0); /* Vrátí se na původní pozici */
+}
+
+.arrow img {
+    width: 20px;
+    rotate: 180deg;
+    transition: transform 0.2s;
+}
+
+.faq-item.active .arrow {
+    transform: rotate(180deg); /* Otočení šipky při aktivaci */
+    transition: 0.3s;
+}
