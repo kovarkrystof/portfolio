@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkMode = localStorage.getItem("dark-mode") === "true";
     setDarkMode(darkMode);
 
-    // Změněno na themeToggleBtn
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             const isDarkMode = document.body.classList.toggle("dark-mode");
@@ -116,4 +115,35 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const item of timelineItems) {
         timelineObserver.observe(item);
     }
+
+    // --- Animace benefitů ---
+    const benefits = document.querySelectorAll('.benefit');
+    benefits.forEach((benefit, index) => {
+        setTimeout(() => {
+            benefit.classList.add('visible');
+        }, index * 200); // Zpoždění pro každý benefit
+    });
+
+    // --- Interaktivní FAQ ---
+    // biome-ignore lint/complexity/noForEach: <explanation>
+        document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+            const faqItem = item.parentElement;
+            faqItem.classList.toggle('active');
+            const answer = faqItem.querySelector('.faq-answer');
+            if (faqItem.classList.contains('active')) {
+                answer.style.display = 'block';
+                setTimeout(() => {
+                    answer.style.opacity = '1';
+                    answer.style.transform = 'translateY(0)';
+                }, 10); // Zpoždění pro animaci
+            } else {
+                answer.style.opacity = '0';
+                answer.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    answer.style.display = 'none';
+                }, 300); // Čas potřebný pro animaci
+            }
+        });
+    });
 });
