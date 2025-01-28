@@ -3,6 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+
+    scroll-behavior: smooth;
 }
 
 
@@ -38,9 +40,6 @@
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.192);
 }
 
-html {
-    scroll-behavior: smooth;
-}
 
 body {
     font-size: 16px;
@@ -95,8 +94,12 @@ header {
 
 nav {
     display: flex;
-    justify-content: center; /* Centrum pro navigaci */
+    justify-content: right; /* Centrum pro navigaci */
+    text-align: right;
     flex-grow: 1;
+    letter-spacing: 0.05px;
+    margin-right: 0;
+    padding-right: 0;
 }
 
 nav ul {
@@ -144,6 +147,35 @@ nav ul li a:hover {
     color: var(--button-color);
 }
 
+.nav-action {
+    color: #fffffe;
+    background-color: #3da9fc;
+    font-weight: 599;
+    padding: 15px 30px;
+    border-radius: 5px;
+}
+
+.nav-action:hover {
+    background-color: var(--hover-color);
+    color: var(--button-text);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.nav-action:after {
+    position: relative;
+    bottom: 0%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 0;
+    content: "";
+    background: none;
+    height: 0;
+    transition: none;
+}
+
+
 /* Hamburger Menu */
 .burger {
     display: none;
@@ -189,6 +221,7 @@ section h2 {
     font-size: 3.5em;
     color: var(--headline-color);
     margin-bottom: 60px;
+    text-align: left;
 }
 
 .hero p {
@@ -205,6 +238,7 @@ section h2 {
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2em;
+    font-weight: 599;
     transition: background-color 0.3s ease;
 }
 
@@ -652,7 +686,7 @@ footer {
 .scroll-up-btn img {
     padding: 0;
     margin: 0;
-    width: 20px;
+    width: 21px;
 }
 
 
@@ -726,7 +760,7 @@ footer {
 
     /* Hero section */
     .hero {
-        height: 80vh; /* Zmenšení výšky hero sekce */
+        height: 80dvh; /* Zmenšení výšky hero sekce */
         padding: 20px;
         text-align: center;
     }
