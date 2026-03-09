@@ -3,14 +3,28 @@
     /* Nová, zjednodušená paleta pouze s tmavě modrou */
     --bg-color: #fafafa;
     --card-bg-color: #fffffe;
-    --text-color: #5f6c7b;          /* Hlavní barva pro běžný text */
-    --primary-color: #094067;       /* Tmavě modrá pro nadpisy a všechny akcenty */
-    --primary-color-hover: #1e5a85; /* Lehce světlejší tmavě modrá pro hover */
-    
+    --text-color: #5f6c7b;
+    /* Hlavní barva pro běžný text */
+    --primary-color: #094067;
+    /* Tmavě modrá pro nadpisy a všechny akcenty */
+    --primary-color-hover: #1e5a85;
+    /* Lehce světlejší tmavě modrá pro hover */
+
     --border-color: #e0e0e0;
     --shadow-color: rgba(9, 64, 103, 0.08);
     --shadow-hover-color: rgba(9, 64, 103, 0.16);
     --border-radius: 12px;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --card-bg-color: #1e293b;
+    --text-color: #cbd5e1;
+    --primary-color: #38bdf8;
+    --primary-color-hover: #7dd3fc;
+    --border-color: #334155;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-hover-color: rgba(0, 0, 0, 0.6);
 }
 
 * {
@@ -149,17 +163,21 @@ body {
 .project-link {
     text-decoration: none;
     color: inherit;
+    display: block;
+    height: 100%;
 }
 
 .project-card {
     background-color: transparent;
     width: 100%;
+    height: 100%;
     perspective: 1000px;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
+    height: 100%;
     transition: transform 0.7s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 15px var(--shadow-color);
@@ -167,12 +185,13 @@ body {
     border: 1px solid var(--border-color);
 }
 
-.project-card:hover .card-inner {
+.project-card.flipped .card-inner {
     transform: rotateY(180deg);
 }
 
 .card-front {
     width: 100%;
+    height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: var(--border-radius);
@@ -195,7 +214,7 @@ body {
     display: flex;
     flex-direction: column;
     transform: rotateY(180deg);
-    background-color: #fafafa;
+    background-color: var(--bg-color);
     color: var(--text-color);
     justify-content: center;
     align-items: center;
@@ -215,8 +234,48 @@ body {
 }
 
 .card-front p {
-    margin: 0 1rem 1rem;
+    margin: 0 1rem 0.75rem;
     font-size: 0.9rem;
+}
+
+.flip-btn {
+    display: inline-block;
+    margin: auto 1rem 1rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    align-self: flex-start;
+}
+
+.flip-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.flip-back-btn {
+    margin-top: 1.2rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.flip-back-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
 }
 
 .card-back h4 {
@@ -288,8 +347,10 @@ body {
 @media (max-width: 600px) {
     .card-content {
         padding-right: 0;
-        margin-bottom: 0; /* Změna pro lepší vzhled na mobilu */
+        margin-bottom: 0;
+        /* Změna pro lepší vzhled na mobilu */
     }
+
     .card h1 {
         font-size: 2rem;
     }
@@ -308,8 +369,59 @@ body {
     transform: translateY(0);
 }
 
-.project-link:nth-child(1) { transition-delay: 100ms; }
-.project-link:nth-child(2) { transition-delay: 200ms; }
-.project-link:nth-child(3) { transition-delay: 300ms; }
-.project-link:nth-child(4) { transition-delay: 400ms; }
-.project-link:nth-child(5) { transition-delay: 500ms; }
+.project-link:nth-child(1) {
+    transition-delay: 100ms;
+}
+
+.project-link:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+.project-link:nth-child(3) {
+    transition-delay: 300ms;
+}
+
+.project-link:nth-child(4) {
+    transition-delay: 400ms;
+}
+
+.project-link:nth-child(5) {
+    transition-delay: 500ms;
+}
+
+/* Tlačítko pro tmavý režim */
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--card-bg-color);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px var(--shadow-hover-color);
+    color: var(--primary-color-hover);
+}
+
+@media (max-width: 600px) {
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
