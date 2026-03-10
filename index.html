@@ -20,9 +20,8 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Zabránění probliknutí světlého režimu před načtením JS -->
     <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
@@ -32,11 +31,6 @@
 
     <div class="container">
 
-        <!-- Tlačítko pro tmavý režim -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Přepnout tmavý režim">
-            <i class="fas fa-moon"></i>
-        </button>
-
         <header class="business-card-section hidden">
             <div class="card">
                 <div class="card-content">
@@ -44,8 +38,8 @@
                     <p class="profession">Web Maker, Student</p>
 
                     <div class="contact-info">
-                        <a href="mailto:krystof.kovar@email.cz"><i class="fa-solid fa-envelope"></i>
-                            krystof.kovar@email.cz</a>
+                        <a href="mailto:kovar.krystof@email.cz"><i class="fa-solid fa-envelope"></i>
+                            kovar.krystof@email.cz</a>
                         <a href="tel:+420603756114"><i class="fa-solid fa-phone"></i> +420 603 756 114</a>
                         <a href=""><i class="fa-solid fa-location-dot"></i> Olomouc</a>
                     </div>
@@ -59,9 +53,71 @@
             </div>
         </header>
 
+        <!-- Indikátor pro scrollování dolů -->
+        <div class="scroll-indicator hidden">
+            <a href="#process" aria-label="Zjistit více">
+                <i class="fa-solid fa-chevron-down"></i>
+                <span class="scroll-text">Zjistit více</span>
+            </a>
+        </div>
+
+        <section id="process" class="process-section hidden">
+            <div class="section-header">
+                <h2>Jak probíhá spolupráce?</h2>
+                <p class="section-subtitle">Od prvotní myšlenky až po úspěšné spuštění webu. Rychle, transparentně a bez
+                    starostí.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h3>1. Výchozí konzultace</h3>
+                    <p>Ujasníme si vaše představy, cíle a požadavky. Zjistím, co váš byznys potřebuje.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>2. Návrh a řešení</h3>
+                    <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>3. Programování</h3>
+                    <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>4. Spuštění webu</h3>
+                    <p>Web otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-wrench"></i></div>
+                    <h3>5. Dlouhodobá údržba</h3>
+                    <p>Po spuštění vás v tom nenechám. Zajistím pravidelné aktualizace a případné úpravy obsahu.</p>
+                </div>
+            </div>
+
+            <div class="process-cta">
+                <a href="mailto:kovar.krystof@email.cz" class="cta-button">
+                    <i class="fa-solid fa-envelope"></i> Mám zájem o spolupráci
+                </a>
+            </div>
+        </section>
+
+        <div class="final-cta hidden">
+            <h2>Nechte si vytvořit profesionální web na míru</h2>
+            <p>Ať už potřebujete osobní vizitku, firemní prezentaci nebo komplexní web, společně najdeme to nejlepší
+                řešení pro váš byznys.</p>
+            <a href="mailto:kovar.krystof@email.cz" class="cta-button pulse-effect">
+                <i class="fa-solid fa-envelope"></i> Získat nezávaznou nabídku
+            </a>
+        </div>
+
         <main class="projects-section">
-            <h2 class="hidden">Moje projekty</h2>
-            <h3 class="hidden">Prohlédněte si projekty a klikněte na technologie.</h3>
+            <div class="section-header hidden">
+                <h2>Moje projekty</h2>
+                <p class="section-subtitle">Prohlédněte si ukázky mé práce. Kliknutím na kartu zjistíte více o použitých
+                    technologiích.</p>
+            </div>
 
             <div class="projects-grid">
 
@@ -220,8 +276,16 @@
         </main>
 
         <footer class="site-footer">
-            <p>Máte zájem o spolupráci? <a href="mailto:krystof.kovar@email.cz">Napište mi.</a></p>
-            <p class="copyright">&copy; 2025 Kryštof Kovář. Všechna práva vyhrazena.</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Máte zájem o spolupráci? <a href="mailto:kovar.krystof@email.cz">Napište mi.</a></p>
+                    <p class="copyright">&copy; 2025 Kryštof Kovář. Všechna práva vyhrazena.</p>
+                </div>
+                <!-- Tlačítko pro tmavý režim -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Přepnout tmavý režim">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </footer>
     </div>
 
