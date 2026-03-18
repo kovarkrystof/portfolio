@@ -28,14 +28,47 @@
 </head>
 
 <body>
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="custom-cursor-follower"></div>
 
     <div class="container">
 
+        <nav class="main-nav hidden">
+            <button id="burger-menu" class="burger-menu" aria-label="Menu">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            <div class="nav-actions-left desktop-only">
+                <button class="theme-toggle" aria-label="Přepnout tmavý režim">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">O mně</a></li>
+                <li><a href="#process">Spolupráce</a></li>
+                <li><a href="#projects">Projekty</a></li>
+                <li class="mobile-only mobile-theme-item">
+                    <button class="theme-toggle theme-toggle-mobile" aria-label="Přepnout tmavý režim">
+                        <i class="fas fa-moon"></i> <span>Tmavý režim</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#contact" class="nav-cta">Domluvit schůzku</a>
+            </div>
+        </nav>
+
+        <section class="hero-section hidden">
+            <h1 class="main-hero-heading">Tvořím weby s reálným přínosem a designem na míru.</h1>
+        </section>
+
         <header class="business-card-section hidden">
-            <div class="card">
+            <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
+                data-tilt-max-glare="0.1">
                 <div class="card-content">
-                    <h1>Kryštof Kovář</h1>
-                    <p class="profession">Web Maker, Student</p>
+                    <h2 class="card-name">Kryštof Kovář</h2>
+                    <p class="profession">Web maker, Student</p>
 
                     <div class="contact-info">
                         <a href="mailto:kovar.krystof@email.cz"><i class="fa-solid fa-envelope"></i>
@@ -55,24 +88,67 @@
 
         <!-- Indikátor pro scrollování dolů -->
         <div class="scroll-indicator hidden">
-            <a href="#process" aria-label="Zjistit více">
+            <a href="#about" aria-label="Zjistit více">
                 <i class="fa-solid fa-chevron-down"></i>
                 <span class="scroll-text">Zjistit více</span>
             </a>
         </div>
 
+        <section id="about" class="about-section hidden">
+            <div class="section-header">
+                <h2>Proč si vybrat právě mě?</h2>
+                <p class="section-subtitle">Kombinuji osobní přístup freelancera s moderními technologiemi.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item bento-motto">
+                    <h3>Můj přístup</h3>
+                    <p>Netvořím jen líbivé šablony. Píšu čistý kód, dbám na rychlost načítání a na dokonalé zobrazení na
+                        všech mobilních zařízeních. Ke každému webu přistupuji tak, jako bych ho dělal sám pro sebe.
+                    </p>
+                </div>
+
+                <div class="bento-item bento-stack">
+                    <h3>S čím pracuji</h3>
+                    <div class="tech-marquee">
+                        <div class="tech-marquee-content">
+                            <span><i class="fa-brands fa-html5"></i> HTML5</span>
+                            <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                            <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                            <span><i class="fa-brands fa-php"></i> PHP</span>
+                            <span><i class="fa-solid fa-database"></i> MySQL</span>
+                            <!-- Kopie pro plynulý nekonečný posuv -->
+                            <span><i class="fa-brands fa-html5"></i> HTML5</span>
+                            <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                            <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                            <span><i class="fa-brands fa-php"></i> PHP</span>
+                            <span><i class="fa-solid fa-database"></i> MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-item bento-benefits">
+                    <h3>Osobní spolupráce</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-handshake"></i> Komunikace 1 na 1 přímo se mnou</li>
+                        <li><i class="fa-solid fa-bolt"></i> Rychlá odezva bez zbytečné byrokracie</li>
+                        <li><i class="fa-solid fa-mobile-screen-button"></i> 100% Mobile-first design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section id="process" class="process-section hidden">
             <div class="section-header">
                 <h2>Jak probíhá spolupráce?</h2>
-                <p class="section-subtitle">Od prvotní myšlenky až po úspěšné spuštění webu. Rychle, transparentně a bez
-                    starostí.</p>
+                <p class="section-subtitle">Od první zprávy až po hotový web. Funguji transparentně a bez stresu.</p>
             </div>
 
             <div class="process-steps">
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-comments"></i></div>
                     <h3>1. Výchozí konzultace</h3>
-                    <p>Ujasníme si vaše představy, cíle a požadavky. Zjistím, co váš byznys potřebuje.</p>
+                    <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-pen-nib"></i></div>
@@ -92,31 +168,22 @@
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-wrench"></i></div>
                     <h3>5. Dlouhodobá údržba</h3>
-                    <p>Po spuštění vás v tom nenechám. Zajistím pravidelné aktualizace a případné úpravy obsahu.</p>
+                    <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace a případné úpravy
+                        obsahu.</p>
                 </div>
             </div>
 
             <div class="process-cta">
-                <a href="mailto:kovar.krystof@email.cz" class="cta-button">
-                    <i class="fa-solid fa-envelope"></i> Mám zájem o spolupráci
+                <a href="#contact" class="cta-button">
+                    <i class="fa-solid fa-envelope"></i> Pojďme probrat váš projekt
                 </a>
             </div>
         </section>
 
-        <div class="final-cta hidden">
-            <h2>Nechte si vytvořit profesionální web na míru</h2>
-            <p>Ať už potřebujete osobní vizitku, firemní prezentaci nebo komplexní web, společně najdeme to nejlepší
-                řešení pro váš byznys.</p>
-            <a href="mailto:kovar.krystof@email.cz" class="cta-button pulse-effect">
-                <i class="fa-solid fa-envelope"></i> Získat nezávaznou nabídku
-            </a>
-        </div>
-
-        <main class="projects-section">
+        <main id="projects" class="projects-section">
             <div class="section-header hidden">
-                <h2>Moje projekty</h2>
-                <p class="section-subtitle">Prohlédněte si ukázky mé práce. Kliknutím na kartu zjistíte více o použitých
-                    technologiích.</p>
+                <h2>Takhle může vypadat i váš web</h2>
+                <p class="section-subtitle">Prohlédněte si ukázky mé práce.</p>
             </div>
 
             <div class="projects-grid">
@@ -275,16 +342,29 @@
             </div>
         </main>
 
+        <div id="contact" class="final-cta hidden">
+            <h2>Hledáte někoho na nový web?</h2>
+            <p>Napište mi, co máte v plánu. Ať už je to rychlá vizitka nebo komplexnější web, společně vymyslíme to
+                nejlepší řešení pro vaše podnikání.</p>
+            <a href="mailto:kovar.krystof@email.cz" class="cta-button pulse-effect">
+                <i class="fa-solid fa-envelope"></i> Získat návrh zdarma
+            </a>
+        </div>
+
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-info">
                     <p>Máte zájem o spolupráci? <a href="mailto:kovar.krystof@email.cz">Napište mi.</a></p>
-                    <p class="copyright">&copy; 2025 Kryštof Kovář. Všechna práva vyhrazena.</p>
+                    <p class="copyright">&copy; <span id="current-year">2025</span> Kryštof Kovář. Všechna práva
+                        vyhrazena.</p>
                 </div>
-                <!-- Tlačítko pro tmavý režim -->
-                <button id="theme-toggle" class="theme-toggle" aria-label="Přepnout tmavý režim">
-                    <i class="fas fa-moon"></i>
-                </button>
+
+                <div class="footer-buttons">
+                    <!-- Tlačítko pro návrat nahoru -->
+                    <button id="scroll-to-top" class="scroll-top-btn hidden-btn" aria-label="Návrat nahoru">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
             </div>
         </footer>
     </div>
@@ -319,33 +399,144 @@
         });
 
         // Vlastní Dark Mode logik
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
 
         // Funkce pro nastavení ikony
         const updateIcon = (isDark) => {
-            if (isDark) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+            themeToggleBtns.forEach(btn => {
+                const themeIcon = btn.querySelector('i');
+                if (themeIcon) {
+                    if (isDark) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                        // Optional text update for mobile toggle
+                        const textSpan = btn.querySelector('span');
+                        if (textSpan) textSpan.textContent = 'Světlý režim';
+                    } else {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                        const textSpan = btn.querySelector('span');
+                        if (textSpan) textSpan.textContent = 'Tmavý režim';
+                    }
+                }
+            });
         };
 
         // Zkontroluj existující téma
         const currentTheme = document.documentElement.getAttribute('data-theme');
         updateIcon(currentTheme === 'dark');
 
-        themeToggleBtn.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            let newTheme = theme === 'dark' ? 'light' : 'dark';
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'dark' ? 'light' : 'dark';
 
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme === 'dark');
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon(newTheme === 'dark');
+            });
+        });
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursor-follower');
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            });
+
+            const interactives = document.querySelectorAll('a, button, .project-card, .step, .bento-item, .theme-toggle, .scroll-top-btn');
+
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                    cursorFollower.classList.add('hover');
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                    cursorFollower.classList.remove('hover');
+                });
+            });
+        }
+
+        // Scroll-to-Top Logic
+        const scrollTopBtn = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+                scrollTopBtn.classList.remove('hidden-btn');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+                scrollTopBtn.classList.add('hidden-btn');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Auto-update footer year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Burger menu logic
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        burgerMenu.addEventListener('click', (e) => {
+            e.stopPropagation(); // Zabránit probublání kliknutí na document
+            navLinks.classList.toggle('active');
+            burgerMenu.classList.toggle('open');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burgerMenu.classList.remove('open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !burgerMenu.contains(e.target)) {
+                navLinks.classList.remove('active');
+                burgerMenu.classList.remove('open');
+            }
+        });
+
+        // Magnetic Buttons Logic
+        const magneticButtons = document.querySelectorAll('.nav-cta, .cta-button');
+
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                // Přitažení tlačítka za kurzorem (méně agresivní kvůli UX)
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                // Vrácení tlačítka na původní místo po odjetí myši
+                btn.style.transform = 'translate(0px, 0px)';
+            });
         });
     </script>
+
+    <!-- VanillaTilt pro 3D efekt karty -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"
+        integrity="sha512-wC/cuAOS6h18G0O9GweZ//wBvWvGqE2OzeoNZLgO1oWkGgndA2I72o34tZ1kR3U8aJ4B0mQ1X/y+yB/lHkMWJw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 
