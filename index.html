@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +12,7 @@
     <meta property="og:title" content="Kryštof Kovář - Web Maker & Student">
     <meta property="og:description" content="Osobní portfolio a přehled projektů od tvůrce webů z Olomouce.">
     <meta property="og:image" content="https://kovarkrystof.github.io/portfolio/images/og-image.jpg">
-    <meta property="og:url" content="https://kovarkrystof.github.io/[portfolio/">
+    <meta property="og:url" content="https://kovarkrystof.github.io/portfolio/">
     <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,7 +89,6 @@
             </div>
         </header>
 
-        <!-- Indikátor pro scrollování dolů -->
         <div class="scroll-indicator hidden">
             <a href="#about" aria-label="Zjistit více">
                 <i class="fa-solid fa-chevron-down"></i>
@@ -117,7 +119,6 @@
                             <span><i class="fa-brands fa-js"></i> JavaScript</span>
                             <span><i class="fa-brands fa-php"></i> PHP</span>
                             <span><i class="fa-solid fa-database"></i> MySQL</span>
-                            <!-- Kopie pro plynulý nekonečný posuv -->
                             <span><i class="fa-brands fa-html5"></i> HTML5</span>
                             <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
                             <span><i class="fa-brands fa-js"></i> JavaScript</span>
@@ -144,36 +145,64 @@
                 <p class="section-subtitle">Od první zprávy až po hotový web. Funguji transparentně a bez stresu.</p>
             </div>
 
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-comments"></i></div>
-                    <h3>1. Výchozí konzultace</h3>
-                    <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje.</p>
+            <div class="timeline">
+                <div class="timeline-item hidden">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Krok 1</span>
+                        <h3>Výchozí konzultace</h3>
+                        <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje a jak ho nejlépe odprezentovat online.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-pen-nib"></i></div>
-                    <h3>2. Návrh a řešení</h3>
-                    <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování.</p>
+
+                <div class="timeline-item hidden">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Krok 2</span>
+                        <h3>Návrh a řešení</h3>
+                        <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování, abychom se ujistili, že jdeme správným směrem.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-code"></i></div>
-                    <h3>3. Programování</h3>
-                    <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód.</p>
+
+                <div class="timeline-item hidden">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Krok 3</span>
+                        <h3>Programování</h3>
+                        <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód. Vyladím detaily a animace pro maximální zážitek.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
-                    <h3>4. Spuštění webu</h3>
-                    <p>Web otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály.</p>
+
+                <div class="timeline-item hidden">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Krok 4</span>
+                        <h3>Spuštění webu</h3>
+                        <p>Web důkladně otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály a přístupy.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-wrench"></i></div>
-                    <h3>5. Dlouhodobá údržba</h3>
-                    <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace a případné úpravy
-                        obsahu.</p>
+
+                <div class="timeline-item hidden">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Krok 5</span>
+                        <h3>Dlouhodobá údržba</h3>
+                        <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace, zálohy a případné úpravy obsahu.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="process-cta">
+            <div class="process-cta hidden">
                 <a href="#contact" class="cta-button">
                     <i class="fa-solid fa-envelope"></i> Pojďme probrat váš projekt
                 </a>
@@ -339,6 +368,42 @@
                     </div>
                 </a>
 
+                <a href="http://olkaravan.cz/" target="_blank" class="project-link hidden">
+                    <div class="project-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/olkaravan-cover-photo.png" alt="Náhled projektu OLKARAVAN"
+                                    class="project-image">
+                                <h3>OLKARAVAN</h3>
+                                <p>Prezentační web pro rodinnou půjčovnu obytného vozu v Olomouci. Zákazníkům nabízí přehledné informace, ceník a podmínky pronájmu.</p>
+                                <button class="flip-btn">Použité technologie ↓</button>
+                            </div>
+                            <div class="card-back">
+                                <h4>Použité technologie</h4>
+                                <ul>
+                                    <li>HTML5</li>
+                                    <li>CSS3</li>
+                                    <li>JavaScript</li>
+                                    <li>PHP</li>
+                                    <li>Font Awesome</li>
+                                </ul>
+                                <button class="flip-back-btn">← Zpět</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#contact" class="project-link hidden">
+                    <div class="project-card" style="display: flex; height: 100%;">
+                        <div class="card-inner" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; text-align: center; border: 2px dashed var(--primary-color); background: rgba(59, 130, 246, 0.05); box-shadow: none; transform: none;">
+                            <i class="fa-solid fa-rocket" style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem; opacity: 0.9;"></i>
+                            <h3 style="color: var(--primary-color); font-size: 1.4rem; margin-bottom: 1rem;">Místo pro váš projekt</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-color);">Neustále pracuji na nových webech. Chcete, aby ten další posunul vaše podnikání o krok dál?</p>
+                            <span class="cta-button" style="font-size: 0.9rem; padding: 0.6rem 1.25rem;">Získat návrh zdarma</span>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </main>
 
@@ -360,7 +425,6 @@
                 </div>
 
                 <div class="footer-buttons">
-                    <!-- Tlačítko pro návrat nahoru -->
                     <button id="scroll-to-top" class="scroll-top-btn hidden-btn" aria-label="Návrat nahoru">
                         <i class="fa-solid fa-arrow-up"></i>
                     </button>
@@ -449,7 +513,7 @@
                 cursorFollower.style.top = e.clientY + 'px';
             });
 
-            const interactives = document.querySelectorAll('a, button, .project-card, .step, .bento-item, .theme-toggle, .scroll-top-btn');
+            const interactives = document.querySelectorAll('a, button, .project-card, .bento-item, .theme-toggle, .scroll-top-btn, .timeline-icon, .timeline-content');
 
             interactives.forEach(el => {
                 el.addEventListener('mouseenter', () => {
@@ -533,7 +597,6 @@
         });
     </script>
 
-    <!-- VanillaTilt pro 3D efekt karty -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"
         integrity="sha512-wC/cuAOS6h18G0O9GweZ//wBvWvGqE2OzeoNZLgO1oWkGgndA2I72o34tZ1kR3U8aJ4B0mQ1X/y+yB/lHkMWJw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

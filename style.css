@@ -722,75 +722,129 @@ body::before {
     color: #0f172a;
 }
 
-/* ===== SEKCE 3: JAK PROBÍHÁ SPOLUPRÁCE ===== */
+/* ===== SEKCE: SPOLUPRÁCE (TIMELINE) ===== */
 .process-section {
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
+    position: relative;
 }
 
-.process-steps {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    /* Větší dýchání mez boxy */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 40px; /* Místo pro osu na mobilu */
 }
 
-.step {
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-color), rgba(59, 130, 246, 0.1));
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -58px; /* 40px padding + 18px posun pro vycentrování na čáru */
+    top: 0;
+    width: 40px;
+    height: 40px;
     background: var(--card-bg-color);
-    padding: 2.5rem 2rem;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    z-index: 2;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.timeline-item:hover .timeline-icon {
+    transform: scale(1.15);
+    background: var(--primary-color);
+    color: #fff;
+}
+
+[data-theme="dark"] .timeline-item:hover .timeline-icon {
+    color: #0f172a;
+}
+
+.timeline-content {
+    background: var(--card-bg-color);
+    padding: 2rem;
     border-radius: var(--border-radius);
-    text-align: center;
     box-shadow: 0 4px 20px var(--shadow-color);
     border: 1px solid var(--border-color);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.step:hover {
-    transform: translateY(-6px);
+.timeline-item:hover .timeline-content {
+    transform: translateX(5px);
     box-shadow: 0 12px 30px var(--shadow-hover-color);
 }
 
-.step-icon {
-    width: 65px;
-    height: 65px;
-    background-color: rgba(12, 74, 110, 0.08);
-    /* Lehce tónované pozadí, ne tvrdě vyplněno */
+.timeline-content h3 {
     color: var(--primary-color);
-    /* Ikona v primární barvě pro prémiový vzhled */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.7rem;
-    margin: 0 auto 1.5rem auto;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-[data-theme="dark"] .step-icon {
-    background-color: rgba(56, 189, 248, 0.15);
-}
-
-.step:hover .step-icon {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-[data-theme="dark"] .step:hover .step-icon {
-    color: #0f172a;
-}
-
-.step h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-size: 1.3rem;
 }
 
-.step p {
+.timeline-date {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: var(--pill-radius);
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    color: var(--text-color);
     font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .timeline {
+        padding-left: 60px;
+    }
+    .timeline-icon {
+        left: -80px; /* Zarovnání pro větší padding */
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+    .timeline-content {
+        padding: 2.5rem;
+    }
+    .timeline-content h3 {
+        font-size: 1.5rem;
+    }
 }
 
 .process-cta {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .cta-button {
@@ -1149,33 +1203,12 @@ body::before {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .process-steps {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    .process-steps {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Vylepšení pro 5 položek na desktopu - 3 nahoře, 2 vycentrované dole */
-    .process-steps:has(> :nth-child(5):last-child) {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .process-steps:has(> :nth-child(5):last-child) .step {
-        /* Výpočet šířky pro zachování stejné šířky jako by byly v gridu (3 sloupce) */
-        width: calc((100% - (2 * 2.5rem)) / 3);
-        flex: 0 0 auto;
     }
 }
 
@@ -1314,8 +1347,8 @@ body::before {
     .flip-back-btn,
     .theme-toggle,
     .scroll-top-btn,
-    .step,
-    .bento-item {
+    .bento-item,
+    .timeline-content {
         cursor: none;
     }
 
