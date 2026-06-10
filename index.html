@@ -31,82 +31,162 @@
 </head>
 
 <body>
-    <div id="cursor" class="custom-cursor"></div>
-    <div id="cursor-follower" class="custom-cursor-follower"></div>
 
     <div class="container">
 
         <nav class="main-nav hidden">
+            <a href="#" class="nav-logo">
+                <span class="first-name">Kryštof</span>
+                <span class="last-name">Kovář.</span>
+            </a>
             <button id="burger-menu" class="burger-menu" aria-label="Menu">
                 <span class="burger-line"></span>
                 <span class="burger-line"></span>
                 <span class="burger-line"></span>
             </button>
-            <div class="nav-actions-left desktop-only">
-                <button class="theme-toggle" aria-label="Přepnout tmavý režim">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+
             <ul class="nav-links" id="nav-links">
-                <li><a href="#about">O mně</a></li>
-                <li><a href="#process">Spolupráce</a></li>
-                <li><a href="#projects">Projekty</a></li>
-                <li class="mobile-only mobile-theme-item">
-                    <button class="theme-toggle theme-toggle-mobile" aria-label="Přepnout tmavý režim">
-                        <i class="fas fa-moon"></i> <span>Tmavý režim</span>
-                    </button>
-                </li>
+                <li><a href="#about">Přístup</a></li>
+                <li><a href="#process">Proces</a></li>
+                <li><a href="#projects">Portfolio</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Kontakt</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="#contact" class="nav-cta">Domluvit schůzku</a>
-            </div>
+
         </nav>
 
-        <section class="hero-section hidden">
-            <h1 class="main-hero-heading">Tvořím weby s reálným přínosem a designem na míru.</h1>
-        </section>
-
-        <header class="business-card-section hidden">
-            <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
-                data-tilt-max-glare="0.1">
-                <div class="card-content">
-                    <h2 class="card-name">Kryštof Kovář</h2>
-                    <p class="profession">Web maker, Student</p>
-
-                    <div class="contact-info">
-                        <a href="mailto:kovar.krystof@email.cz"><i class="fa-solid fa-envelope"></i>
-                            kovar.krystof@email.cz</a>
-                        <a href="tel:+420603756114"><i class="fa-solid fa-phone"></i> +420 603 756 114</a>
-                        <a href=""><i class="fa-solid fa-location-dot"></i> Olomouc</a>
+        <section id="hero" class="hero-section hidden">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-badge">Weby & Aplikace na míru</span>
+                    <h1 class="main-hero-heading">Tvořím weby a řešení, která vám <span class="highlight-text">vydělají
+                            více.</span></h1>
+                    <p class="hero-subtitle">Získejte moderní prezentaci, rezervační systém nebo web na míru. Rychle,
+                        bezpečně a hlavně bez tuctových šablon.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="cta-button primary-cta pulse-effect">Získat návrh zdarma</a>
+                        <a href="#projects" class="secondary-cta">Ukázky práce</a>
                     </div>
+                    <div class="hero-trust">
+                        <div class="trust-avatars">
+                            <div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+                            <div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+                            <div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+                        </div>
+                        <span class="trust-text">Připojte se ke spokojeným lokálním klientům.</span>
+                    </div>
+                </div>
 
-                    <div class="social-links">
-                        <a href="https://github.com/kovarkrystof" target="_blank" aria-label="GitHub profil">
-                            <i class="fab fa-github"></i>
-                        </a>
+                <div class="hero-visual">
+                    <div class="hero-character-wrapper">
+                        <img src="images/character-bg-remove.png" alt="Kryštof Kovář" class="hero-character">
+                    </div>
+                    <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.1">
+                        <div class="card-content">
+                            <h2 class="card-name">Kryštof Kovář</h2>
+                            <p class="profession">Web maker, Student</p>
+
+                            <div class="contact-info">
+                                <a href="mailto:kovar.krystof@email.cz"><i class="fa-solid fa-envelope"></i>
+                                    kovar.krystof@email.cz</a>
+                                <a href="tel:+420603756114"><i class="fa-solid fa-phone"></i> +420 603 756 114</a>
+                                <a href=""><i class="fa-solid fa-location-dot"></i> Olomouc</a>
+                            </div>
+
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/krystof-kovar" target="_blank"
+                                    aria-label="LinkedIn profil">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/kovarkrystof" target="_blank" aria-label="GitHub profil">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <div class="scroll-indicator hidden">
-            <a href="#about" aria-label="Zjistit více">
-                <i class="fa-solid fa-chevron-down"></i>
-                <span class="scroll-text">Zjistit více</span>
-            </a>
+        <!-- Tech Strip (Nekonečný posuv log technologií) -->
+        <div class="tech-strip hidden">
+            <!-- První sada -->
+            <div class="tech-slide">
+                <i class="fa-brands fa-html5" title="HTML5"></i>
+                <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                <i class="fa-brands fa-js" title="JavaScript"></i>
+                <i class="fa-brands fa-php" title="PHP"></i>
+                <i class="fa-solid fa-database" title="MySQL / Databáze"></i>
+                <i class="fa-brands fa-github" title="GitHub"></i>
+                <i class="fa-brands fa-git-alt" title="Git"></i>
+                <!-- Duplikace v rámci sady pro jistotu u velmi širokých monitorů -->
+                <i class="fa-brands fa-html5"></i>
+                <i class="fa-brands fa-css3-alt"></i>
+                <i class="fa-brands fa-js"></i>
+                <i class="fa-brands fa-php"></i>
+                <i class="fa-solid fa-database"></i>
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-git-alt"></i>
+            </div>
+            <!-- Druhá totožná sada pro plynulé napojení smyčky -->
+            <div class="tech-slide">
+                <i class="fa-brands fa-html5" title="HTML5"></i>
+                <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                <i class="fa-brands fa-js" title="JavaScript"></i>
+                <i class="fa-brands fa-php" title="PHP"></i>
+                <i class="fa-solid fa-database" title="MySQL / Databáze"></i>
+                <i class="fa-brands fa-github" title="GitHub"></i>
+                <i class="fa-brands fa-git-alt" title="Git"></i>
+                <!-- Duplikace v rámci sady pro jistotu u velmi širokých monitorů -->
+                <i class="fa-brands fa-html5"></i>
+                <i class="fa-brands fa-css3-alt"></i>
+                <i class="fa-brands fa-js"></i>
+                <i class="fa-brands fa-php"></i>
+                <i class="fa-solid fa-database"></i>
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-git-alt"></i>
+            </div>
         </div>
+
+        <section class="agitation-section hidden">
+            <div class="agitation-grid">
+                <div class="agitation-card problem-card">
+                    <h3><i class="fa-solid fa-circle-xmark"></i> Trápí vás nefungující web?</h3>
+                    <ul class="feature-list">
+                        <li>Návštěvníci odcházejí kvůli <strong>zdlouhavému načítání</strong>.</li>
+                        <li>Na <strong>mobilu se web rozpadá</strong> a na tlačítka nejde kliknout.</li>
+                        <li>Vaše prezentace vypadá <strong>stejně jako u konkurence</strong>.</li>
+                        <li>Chybí vám funkce, jako např. <strong>rezervační systém</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="agitation-card solution-card">
+                    <h3><i class="fa-solid fa-circle-check"></i> Řešení, které dává smysl</h3>
+                    <ul class="feature-list">
+                        <li><strong>Blesková rychlost:</strong> Čistý kód = zákazníci nečekají.</li>
+                        <li><strong>Mobile-first:</strong> Dokonalý zážitek na každém telefonu.</li>
+                        <li><strong>Originální vzhled:</strong> Design na míru vaší značce a oboru.</li>
+                        <li><strong>Komplexní systémy:</strong> Naprogramuji, cokoliv potřebujete.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <section id="about" class="about-section hidden">
             <div class="section-header">
-                <h2>Proč si vybrat právě mě?</h2>
-                <p class="section-subtitle">Kombinuji osobní přístup freelancera s moderními technologiemi.</p>
+                <h2>Proč to nechat na mně?</h2>
+                <p class="section-subtitle">Protože na to nebudete sami. Získáte osobní přístup a řešení, které opravdu
+                    funguje.</p>
             </div>
 
             <div class="bento-grid">
                 <div class="bento-item bento-motto">
                     <h3>Můj přístup</h3>
-                    <p>Netvořím jen líbivé šablony. Píšu čistý kód, dbám na rychlost načítání a na dokonalé zobrazení na
-                        všech mobilních zařízeních. Ke každému webu přistupuji tak, jako bych ho dělal sám pro sebe.
+                    <p>Netvořím jen líbivé statické weby podle šablon. Píšu čistý kód a umím postavit i komplexnější
+                        webová řešení na míru, jako jsou například rezervační systémy. Dbám na rychlost načítání a
+                        dokonalé zobrazení na všech zařízeních. Ke každému projektu přistupuji tak, jako bych ho dělal
+                        sám pro sebe.
                     </p>
                 </div>
 
@@ -141,8 +221,9 @@
 
         <section id="process" class="process-section hidden">
             <div class="section-header">
-                <h2>Jak probíhá spolupráce?</h2>
-                <p class="section-subtitle">Od první zprávy až po hotový web. Funguji transparentně a bez stresu.</p>
+                <h2>Zní to dobře? Takhle to funguje v praxi:</h2>
+                <p class="section-subtitle">Žádný chaos. Jen jasný a transparentní proces od první zprávy až po spuštění
+                    webu.</p>
             </div>
 
             <div class="timeline">
@@ -153,7 +234,8 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Krok 1</span>
                         <h3>Výchozí konzultace</h3>
-                        <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje a jak ho nejlépe odprezentovat online.</p>
+                        <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje a jak ho
+                            nejlépe odprezentovat online.</p>
                     </div>
                 </div>
 
@@ -164,7 +246,8 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Krok 2</span>
                         <h3>Návrh a řešení</h3>
-                        <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování, abychom se ujistili, že jdeme správným směrem.</p>
+                        <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování, abychom
+                            se ujistili, že jdeme správným směrem.</p>
                     </div>
                 </div>
 
@@ -175,7 +258,8 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Krok 3</span>
                         <h3>Programování</h3>
-                        <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód. Vyladím detaily a animace pro maximální zážitek.</p>
+                        <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód. Vyladím detaily a
+                            animace pro maximální zážitek.</p>
                     </div>
                 </div>
 
@@ -186,7 +270,8 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Krok 4</span>
                         <h3>Spuštění webu</h3>
-                        <p>Web důkladně otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály a přístupy.</p>
+                        <p>Web důkladně otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály a
+                            přístupy.</p>
                     </div>
                 </div>
 
@@ -197,7 +282,8 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Krok 5</span>
                         <h3>Dlouhodobá údržba</h3>
-                        <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace, zálohy a případné úpravy obsahu.</p>
+                        <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace, zálohy a
+                            případné úpravy obsahu.</p>
                     </div>
                 </div>
             </div>
@@ -211,8 +297,9 @@
 
         <main id="projects" class="projects-section">
             <div class="section-header hidden">
-                <h2>Takhle může vypadat i váš web</h2>
-                <p class="section-subtitle">Prohlédněte si ukázky mé práce.</p>
+                <h2>Podívejte se, jak tento přístup pomohl ostatním:</h2>
+                <p class="section-subtitle">Tyto weby už dnes spolehlivě vydělávají a přinášejí poptávky svým majitelům.
+                </p>
             </div>
 
             <div class="projects-grid">
@@ -326,7 +413,8 @@
                                 <img src="images/olkaravan-cover-photo.png" alt="Náhled projektu OLKARAVAN"
                                     class="project-image">
                                 <h3>OLKARAVAN</h3>
-                                <p>Prezentační web pro rodinnou půjčovnu obytného vozu v Olomouci. Zákazníkům nabízí přehledné informace, ceník a podmínky pronájmu.</p>
+                                <p>Prezentační web pro rodinnou půjčovnu obytného vozu v Olomouci. Zákazníkům nabízí
+                                    přehledné informace, ceník a podmínky pronájmu.</p>
                                 <button class="flip-btn">Použité technologie ↓</button>
                             </div>
                             <div class="card-back">
@@ -395,11 +483,16 @@
 
                 <a href="#contact" class="project-link hidden">
                     <div class="project-card" style="display: flex; height: 100%;">
-                        <div class="card-inner" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; text-align: center; border: 2px dashed var(--primary-color); background: rgba(59, 130, 246, 0.05); box-shadow: none; transform: none;">
-                            <i class="fa-solid fa-rocket" style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem; opacity: 0.9;"></i>
-                            <h3 style="color: var(--primary-color); font-size: 1.4rem; margin-bottom: 1rem;">Místo pro váš projekt</h3>
-                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-color);">Neustále pracuji na nových webech. Chcete, aby ten další posunul vaše podnikání o krok dál?</p>
-                            <span class="cta-button" style="font-size: 0.9rem; padding: 0.6rem 1.25rem;">Získat návrh zdarma</span>
+                        <div class="card-inner"
+                            style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; text-align: center; border: 2px dashed var(--primary-color); background: rgba(59, 130, 246, 0.05); box-shadow: none; transform: none;">
+                            <i class="fa-solid fa-rocket"
+                                style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem; opacity: 0.9;"></i>
+                            <h3 style="color: var(--primary-color); font-size: 1.4rem; margin-bottom: 1rem;">Místo pro
+                                váš projekt</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-color);">Neustále
+                                pracuji na nových webech. Chcete, aby ten další posunul vaše podnikání o krok dál?</p>
+                            <span class="cta-button" style="font-size: 0.9rem; padding: 0.6rem 1.25rem;">Získat návrh
+                                zdarma</span>
                         </div>
                     </div>
                 </a>
@@ -407,24 +500,134 @@
             </div>
         </main>
 
-        <div id="contact" class="final-cta hidden">
-            <h2>Hledáte někoho na nový web?</h2>
-            <p>Napište mi, co máte v plánu. Ať už je to rychlá vizitka nebo komplexnější web, společně vymyslíme to
-                nejlepší řešení pro vaše podnikání.</p>
-            <a href="mailto:kovar.krystof@email.cz" class="cta-button pulse-effect">
-                <i class="fa-solid fa-envelope"></i> Získat návrh zdarma
-            </a>
-        </div>
+        <section id="faq" class="faq-section hidden">
+            <div class="section-header">
+                <h2>Možná vás ještě napadá pár otázek...</h2>
+                <p class="section-subtitle">Tady jsou rychlé odpovědi na to, co klienty zajímá nejčastěji.</p>
+            </div>
+
+            <div class="faq-container">
+                <details class="faq-item" name="faq">
+                    <summary>Kolik stojí web nebo aplikace na míru?</summary>
+                    <div class="faq-content">
+                        <p>Cena se odvíjí od složitosti projektu a vašich finančních možností. Nemám žádné pevné a
+                            předražené balíčky. Ať už máte menší budget na rychlou firemní vizitku, nebo plánujete
+                            investovat do komplexního rezervačního systému, určitě společně najdeme řešení. Po naší
+                            úvodní schůzce vám vždy zdarma připravím přesný návrh na míru.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item" name="faq">
+                    <summary>Jak dlouho tvorba webu trvá?</summary>
+                    <div class="faq-content">
+                        <p>Běžný firemní web je většinou spuštěný do 2 až 4 týdnů. U složitějších systémů na míru se
+                            bavíme zhruba o 1 až 2 měsících intenzivní práce. Termín si vždy potvrdíme předem.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item" name="faq">
+                    <summary>Co ode mě budete na začátku potřebovat?</summary>
+                    <div class="faq-content">
+                        <p>Především vaši představu o tom, jaký má web plnit cíl, jaké máte služby a pro koho je určen.
+                            Pokud máte vlastní texty, fotky nebo logo, je to výhoda. Pokud ne, se vším vám rád pomohu.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq-item" name="faq">
+                    <summary>Postaráte se o web i po jeho spuštění?</summary>
+                    <div class="faq-content">
+                        <p>Určitě. Nestavím weby systémem "vyrobit a sbohem". Rád vám zajistím hosting, dlouhodobou
+                            správu, pravidelné aktualizace i případné rozšiřování funkcí, abyste s webem neměli žádné
+                            starosti.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section hidden">
+            <div class="contact-grid">
+                <div class="contact-text">
+                    <h2>Pojďme napsat další příběh. Ten váš.</h2>
+                    <p class="contact-subtitle">Udělejte první krok. Napište mi, co máte v plánu, a já vám vymyslím to
+                        nejlepší řešení. Úvodní konzultace je vždy <strong>zdarma</strong>.</p>
+
+                    <div class="contact-perks">
+                        <div class="perk">
+                            <i class="fa-solid fa-bolt"></i>
+                            <div>
+                                <h4>Rychlá odezva</h4>
+                                <span>Odepíšu vám nejpozději do 24 hodin.</span>
+                            </div>
+                        </div>
+                        <div class="perk">
+                            <i class="fa-solid fa-handshake"></i>
+                            <div>
+                                <h4>Osobní přístup</h4>
+                                <span>Žádní roboti, jednáte přímo se mnou.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-direct">
+                        <p>Preferujete přímý kontakt?</p>
+                        <a href="mailto:kovar.krystof@email.cz"><i class="fa-solid fa-envelope"></i>
+                            kovar.krystof@email.cz</a>
+                        <a href="tel:+420603756114"><i class="fa-solid fa-phone"></i> +420 603 756 114</a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form action="https://formspree.io/f/mojzlvwy" method="POST" class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Jméno a příjmení *</label>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder=" " required>
+                                <label for="email">E-mail *</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder=" ">
+                                <label for="phone">Telefon</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                            <label for="message">Vaše představa / dotaz *</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn pulse-effect">
+                            Získat nezávazný návrh <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                        <div id="form-status" style="text-align: center; margin-top: 1rem; font-weight: 600;"></div>
+                        <p class="form-note"><i class="fa-solid fa-lock"></i> Vaše data nikomu neprodám a nepošlu vám
+                            spam.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
 
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-info">
+                    <div class="footer-socials">
+                        <a href="https://github.com/vash-github" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/krystof-kovar" target="_blank"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                    </div>
                     <p>Máte zájem o spolupráci? <a href="mailto:kovar.krystof@email.cz">Napište mi.</a></p>
                     <p class="copyright">&copy; <span id="current-year">2025</span> Kryštof Kovář. Všechna práva
                         vyhrazena.</p>
                 </div>
 
                 <div class="footer-buttons">
+                    <button class="theme-toggle" aria-label="Přepnout tmavý režim">
+                        <i class="fas fa-moon"></i>
+                    </button>
                     <button id="scroll-to-top" class="scroll-top-btn hidden-btn" aria-label="Návrat nahoru">
                         <i class="fa-solid fa-arrow-up"></i>
                     </button>
@@ -433,174 +636,10 @@
         </footer>
     </div>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        });
-
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-
-        // Flip on button click
-        document.querySelectorAll('.flip-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                btn.closest('.project-card').classList.add('flipped');
-            });
-        });
-
-        document.querySelectorAll('.flip-back-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                btn.closest('.project-card').classList.remove('flipped');
-            });
-        });
-
-        // Vlastní Dark Mode logik
-        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
-
-        // Funkce pro nastavení ikony
-        const updateIcon = (isDark) => {
-            themeToggleBtns.forEach(btn => {
-                const themeIcon = btn.querySelector('i');
-                if (themeIcon) {
-                    if (isDark) {
-                        themeIcon.classList.remove('fa-moon');
-                        themeIcon.classList.add('fa-sun');
-                        // Optional text update for mobile toggle
-                        const textSpan = btn.querySelector('span');
-                        if (textSpan) textSpan.textContent = 'Světlý režim';
-                    } else {
-                        themeIcon.classList.remove('fa-sun');
-                        themeIcon.classList.add('fa-moon');
-                        const textSpan = btn.querySelector('span');
-                        if (textSpan) textSpan.textContent = 'Tmavý režim';
-                    }
-                }
-            });
-        };
-
-        // Zkontroluj existující téma
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        updateIcon(currentTheme === 'dark');
-
-        themeToggleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                let theme = document.documentElement.getAttribute('data-theme');
-                let newTheme = theme === 'dark' ? 'light' : 'dark';
-
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme === 'dark');
-            });
-        });
-
-        // Custom Cursor Logic
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursor-follower');
-
-        if (window.matchMedia("(pointer: fine)").matches) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            });
-
-            const interactives = document.querySelectorAll('a, button, .project-card, .bento-item, .theme-toggle, .scroll-top-btn, .timeline-icon, .timeline-content');
-
-            interactives.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.classList.add('hover');
-                    cursorFollower.classList.add('hover');
-                });
-
-                el.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('hover');
-                    cursorFollower.classList.remove('hover');
-                });
-            });
-        }
-
-        // Scroll-to-Top Logic
-        const scrollTopBtn = document.getElementById('scroll-to-top');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('visible');
-                scrollTopBtn.classList.remove('hidden-btn');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-                scrollTopBtn.classList.add('hidden-btn');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Auto-update footer year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Burger menu logic
-        const burgerMenu = document.getElementById('burger-menu');
-        const navLinks = document.getElementById('nav-links');
-
-        burgerMenu.addEventListener('click', (e) => {
-            e.stopPropagation(); // Zabránit probublání kliknutí na document
-            navLinks.classList.toggle('active');
-            burgerMenu.classList.toggle('open');
-        });
-
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                burgerMenu.classList.remove('open');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !burgerMenu.contains(e.target)) {
-                navLinks.classList.remove('active');
-                burgerMenu.classList.remove('open');
-            }
-        });
-
-        // Magnetic Buttons Logic
-        const magneticButtons = document.querySelectorAll('.nav-cta, .cta-button');
-
-        magneticButtons.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                // Přitažení tlačítka za kurzorem (méně agresivní kvůli UX)
-                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-            });
-
-            btn.addEventListener('mouseleave', () => {
-                // Vrácení tlačítka na původní místo po odjetí myši
-                btn.style.transform = 'translate(0px, 0px)';
-            });
-        });
-    </script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"
         integrity="sha512-wC/cuAOS6h18G0O9GweZ//wBvWvGqE2OzeoNZLgO1oWkGgndA2I72o34tZ1kR3U8aJ4B0mQ1X/y+yB/lHkMWJw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="main.js"></script>
 </body>
 
 </html>

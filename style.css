@@ -100,8 +100,7 @@ body::before {
 /* ===== NAVIGACE ===== */
 .main-nav {
     display: flex;
-    justify-content: center;
-    /* Zarovnání na střed pro odkazy */
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     margin-bottom: 2rem;
@@ -255,6 +254,7 @@ body::before {
 @media (min-width: 768px) {
     .nav-links {
         display: flex;
+        margin-right: 2.5rem; /* Posunutí odkazů dále od pravého okraje */
     }
 }
 
@@ -265,8 +265,13 @@ body::before {
     transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--primary-color);
+}
+
+.nav-links a.active {
+    font-weight: 700; /* Zvýrazní tloušťkou písma */
 }
 
 .nav-actions {
@@ -306,40 +311,403 @@ body::before {
     color: #0f172a;
 }
 
-/* ===== HERO SEKCE A NADPIS ===== */
+/* ===== HERO FUNNEL SEKCE ===== */
 .hero-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    padding: 2rem 0 4rem 0;
     margin-bottom: 2rem;
-    padding: 0 1rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .hero-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 2rem;
+    }
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    padding: 0.4rem 1rem;
+    border-radius: var(--pill-radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .main-hero-heading {
-    font-size: 3.2rem;
+    font-size: 3.5rem;
     font-weight: 700;
     letter-spacing: -1px;
-    max-width: 800px;
-    line-height: 1.2;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+}
+
+.highlight-text {
     background: linear-gradient(90deg, var(--primary-color), var(--primary-color-hover));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-@media (max-width: 768px) {
-    .main-hero-heading {
-        font-size: 2.4rem;
-    }
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 550px;
 }
 
-/* ===== SEKCE 1: VIZITKA ===== */
-.business-card-section {
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.primary-cta {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: var(--pill-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+    display: inline-flex;
+    align-items: center;
+}
+
+.primary-cta:hover {
+    background: var(--primary-color-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+}
+
+.secondary-cta {
+    background: transparent;
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    border-radius: var(--pill-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.secondary-cta:hover {
+    background: var(--card-bg-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+[data-theme="dark"] .secondary-cta:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+}
+
+.trust-avatars {
+    display: flex;
+}
+
+.avatar-placeholder {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--border-color);
+    border: 2px solid var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    margin-left: -10px;
+}
+
+.trust-avatars .avatar-placeholder:first-child {
+    margin-left: 0;
+}
+
+.trust-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Úprava původní vizitky pro Hero sekci */
+.hero-visual {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 4rem;
+    position: relative;
+}
+
+.hero-character-wrapper {
+    position: absolute;
+    bottom: -15px;
+    right: -40px;
+    z-index: 10;
+    pointer-events: none;
+    animation: float-character 4s ease-in-out infinite;
+}
+
+.hero-character {
+    width: 190px;
+    height: auto;
+    object-fit: contain;
+}
+
+@keyframes float-character {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@media (max-width: 768px) {
+    .hero-character-wrapper {
+        top: auto;
+        bottom: -10px;
+        right: -15px;
+    }
+    .hero-character {
+        width: 130px;
+    }
+}
+
+/* ===== VIZITKA (CARD) ===== */
+.card {
+    background: var(--card-bg-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    width: 380px;
+    min-height: 220px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    transform-style: preserve-3d;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--primary-color);
+}
+
+.card-content {
+    text-align: left;
+    transform: translateZ(30px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-name {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.profession {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info a i {
+    color: var(--text-color);
+    width: 20px;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover, .contact-info a:hover i {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .main-hero-heading {
+        font-size: 2.5rem;
+    }
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+    .hero-trust {
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+/* ===== AGITATION SEKCE (Problém vs Řešení) ===== */
+.agitation-section {
+    margin-bottom: 6rem;
+}
+
+.agitation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .agitation-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+.agitation-card {
+    background: var(--card-bg-color);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agitation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--shadow-hover-color);
+}
+
+.problem-card {
+    border-top: 4px solid #ef4444;
+}
+
+.problem-card h3 {
+    color: #ef4444;
+}
+
+.solution-card {
+    border-top: 4px solid #22c55e;
+}
+
+.solution-card h3 {
+    color: #22c55e;
+}
+
+.agitation-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-list li {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.problem-card .feature-list li::before {
+    content: '✖';
+    position: absolute;
+    left: 0;
+    color: #ef4444;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.solution-card .feature-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #22c55e;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .card {
@@ -732,13 +1100,14 @@ body::before {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    padding-left: 40px; /* Místo pro osu na mobilu */
+    padding-left: 60px;
+    /* Místo pro osu na mobilu (zvětšeno pro odsunutí od okraje) */
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: 20px;
     top: 0;
     width: 4px;
     height: 100%;
@@ -757,7 +1126,8 @@ body::before {
 
 .timeline-icon {
     position: absolute;
-    left: -58px; /* 40px padding + 18px posun pro vycentrování na čáru */
+    left: -58px;
+    /* 40px padding + 18px posun pro vycentrování na čáru */
     top: 0;
     width: 40px;
     height: 40px;
@@ -826,17 +1196,21 @@ body::before {
 
 @media (min-width: 768px) {
     .timeline {
-        padding-left: 60px;
+        padding-left: 80px;
     }
+
     .timeline-icon {
-        left: -80px; /* Zarovnání pro větší padding */
+        left: -80px;
+        /* Zarovnání pro větší padding */
         width: 44px;
         height: 44px;
         font-size: 1.2rem;
     }
+
     .timeline-content {
         padding: 2.5rem;
     }
+
     .timeline-content h3 {
         font-size: 1.5rem;
     }
@@ -917,24 +1291,99 @@ body::before {
     }
 }
 
-/* ===== ZÁVĚREČNÉ HLAVNÍ CTA (nad footerem) ===== */
-.final-cta {
-    text-align: center;
-    background: linear-gradient(135deg, var(--card-bg-color), rgba(12, 74, 110, 0.03));
-    padding: 4rem 2rem;
+/* ===== FAQ SEKCE ===== */
+.faq-section {
+    margin-bottom: 6rem;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 8px 25px var(--shadow-hover-color);
+}
+
+.faq-item[open] {
+    border-color: var(--primary-color);
+}
+
+.faq-item summary {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.faq-content {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.faq-content p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+/* ===== KONTAKTNÍ SEKCE A FORMULÁŘ ===== */
+.contact-section {
     margin: 5rem 0 2rem 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background: linear-gradient(135deg, var(--card-bg-color), rgba(12, 74, 110, 0.02));
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
     box-shadow: 0 10px 30px var(--shadow-color);
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
 }
 
-[data-theme="dark"] .final-cta {
-    background: linear-gradient(135deg, var(--card-bg-color), rgba(56, 189, 248, 0.05));
+[data-theme="dark"] .contact-grid {
+    background: linear-gradient(135deg, var(--card-bg-color), rgba(56, 189, 248, 0.03));
 }
 
-.final-cta::before {
+.contact-grid::before {
     content: '';
     position: absolute;
     top: 0;
@@ -944,17 +1393,217 @@ body::before {
     background: linear-gradient(180deg, var(--primary-color), var(--primary-color-hover));
 }
 
-.final-cta h2 {
+@media (min-width: 768px) {
+    .contact-grid {
+        padding: 3rem 2rem;
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1.2fr;
+        padding: 4rem;
+        gap: 4rem;
+    }
+}
+
+.contact-text h2 {
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
-.final-cta p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 2.5rem auto;
+.contact-subtitle {
+    font-size: 1.05rem;
     color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.contact-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.perk i {
+    color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+.perk h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.perk span {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.contact-direct {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-direct p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-direct a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-direct a:hover {
+    color: var(--primary-color);
+}
+
+/* Formulář */
+.contact-form-wrapper {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: calc(var(--border-radius) - 8px);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+@media (min-width: 768px) {
+    .contact-form-wrapper {
+        padding: 2.5rem;
+    }
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background: var(--card-bg-color);
+    padding: 0 0.25rem;
+}
+
+/* Floating label magic */
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.submit-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 1.2rem;
+    border-radius: var(--pill-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background: var(--primary-color-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+}
+
+.form-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+.form-note i {
+    color: var(--primary-color);
 }
 
 /* ===== SEKCE 3: PROJEKTY ===== */
@@ -1218,7 +1867,7 @@ body::before {
         font-size: 2rem;
     }
 
-    .final-cta h2 {
+    .contact-text h2 {
         font-size: 1.8rem;
     }
 
@@ -1332,66 +1981,109 @@ body::before {
     z-index: 1000;
 }
 
-/* ===== CUSTOM CURSOR ===== */
-@media (pointer: fine) {
+/* ===== NAV LOGO ===== */
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-color);
+}
 
-    /* Apply only on devices with a mouse */
-    body {
-        cursor: none;
-    }
+.first-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-color);
+}
 
-    a,
-    button,
-    .project-card,
-    .flip-btn,
-    .flip-back-btn,
-    .theme-toggle,
-    .scroll-top-btn,
-    .bento-item,
-    .timeline-content {
-        cursor: none;
-    }
+.last-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--text-color);
+    letter-spacing: 3.5px;
+}
 
-    .custom-cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 10px;
-        height: 10px;
-        background-color: var(--primary-color);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 9999;
-        transition: width 0.2s, height 0.2s, background-color 0.2s;
-    }
+/* ===== TECH STRIP ===== */
+.tech-strip {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    padding: 0.75rem 0; /* Extrémně úzké */
+    margin-top: 0;
+    margin-bottom: 4rem;
+    background: transparent;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    position: relative;
+}
 
-    .custom-cursor-follower {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 30px;
-        height: 30px;
-        border: 2px solid var(--primary-color);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 9998;
-        transition: transform 0.1s cubic-bezier(0.165, 0.84, 0.44, 1),
-            width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
-    }
+.tech-strip::before, .tech-strip::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+}
 
-    /* Hover state for links and buttons */
-    .custom-cursor.hover {
-        width: 40px;
-        height: 40px;
-        background-color: var(--primary-color);
-        opacity: 0.15;
-    }
+.tech-strip::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+}
 
-    .custom-cursor-follower.hover {
-        width: 40px;
-        height: 40px;
-        border-color: transparent;
-    }
+.tech-strip::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+}
+
+.tech-slide {
+    display: flex;
+    gap: 4rem;
+    padding-right: 4rem; /* Důležité pro napojení smyčky na další slide */
+    align-items: center;
+    animation: scroll-tech 20s linear infinite;
+    font-size: 1.75rem; /* Menší loga */
+    color: var(--text-color);
+    opacity: 0.3; /* Méně křiklavé */
+    white-space: nowrap;
+}
+
+.tech-slide i {
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tech-slide i:hover {
+    color: var(--primary-color);
+    opacity: 1;
+    transform: translateY(-5px) scale(1.1);
+}
+
+@keyframes scroll-tech {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== FOOTER SOCIALS ===== */
+.footer-socials {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-socials a {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    opacity: 0.8;
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    opacity: 1;
 }
