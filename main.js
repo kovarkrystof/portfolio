@@ -35,6 +35,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
 
+    // Spustí animaci tečky v logu jakmile se navigace poprvé odhalí
+    const navDot = document.querySelector('.nav-dot');
+    const mainNav = document.querySelector('.main-nav');
+    if (navDot && mainNav) {
+        const navRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Počkáme, až doběhne základní fade-in navigace (cca 400ms), pak přiletí tečka
+                    setTimeout(() => {
+                        navDot.classList.add('dot-animate-land');
+                    }, 400);
+                    navRevealObserver.unobserve(mainNav); // Jen jednou při načtení
+                }
+            });
+        }, { threshold: 0.5 });
+        navRevealObserver.observe(mainNav);
+    }
+
 
     /**
      * 1.5. VLASTNÍ PLYNULÉ ROLOVÁNÍ (CONSTANT SPEED)
@@ -43,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Naše funkce vypočítá čas na základě vzdálenosti (např. 1 ms na 1 pixel).
      */
     const customSmoothScroll = (targetInput) => {
-        const headerOffset = 100; // Respektování scroll-padding-top
+        const headerOffset = 140; // Respektování scroll-padding-top + rezerva pro větší navigaci
         
         let targetPosition;
         if (typeof targetInput === 'number') {

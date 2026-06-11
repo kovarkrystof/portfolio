@@ -159,16 +159,22 @@ body::before {
 
 /* ===== NAVIGACE ===== */
 .sticky-nav-wrapper {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    width: 100%;
     pointer-events: none; /* Umožní klikat skrz průhledné části wrapperu na obsah pod ním */
 }
 
 .sticky-nav-wrapper .container {
     padding-top: 1.5rem !important;
     padding-bottom: 0 !important;
+}
+
+/* Kompenzace výšky fixní navigace - obsah nezačíná pod ní */
+.page-content-offset {
+    padding-top: 90px;
 }
 
 .main-nav {
@@ -2563,5 +2569,10 @@ body::before {
         padding-top: 1rem !important;
         padding-left: 1.25rem !important;
         padding-right: 1.25rem !important;
+    }
+
+    /* Menší odsazení na mobilu - navigace je kompaktnější */
+    .page-content-offset {
+        padding-top: 75px;
     }
 }
