@@ -31,6 +31,12 @@
 </head>
 
 <body>
+    <!-- Dekorativní prvky prolínající se napříč sekcemi -->
+    <div class="decorative-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <div class="container">
 
@@ -108,9 +114,10 @@
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- Tech Strip (Nekonečný posuv log technologií) -->
-        <div class="tech-strip hidden">
+    <!-- Tech Strip (Nekonečný posuv log technologií) -->
+    <div class="tech-strip hidden">
             <!-- První sada -->
             <div class="tech-slide">
                 <i class="fa-brands fa-html5" title="HTML5"></i>
@@ -149,9 +156,10 @@
             </div>
         </div>
 
-        <section class="agitation-section hidden">
+    <div class="container">
+        <section class="agitation-section">
             <div class="agitation-grid">
-                <div class="agitation-card problem-card">
+                <div class="agitation-card problem-card hidden">
                     <h3><i class="fa-solid fa-circle-xmark"></i> Trápí vás nefungující web?</h3>
                     <ul class="feature-list">
                         <li>Návštěvníci odcházejí kvůli <strong>zdlouhavému načítání</strong>.</li>
@@ -161,7 +169,7 @@
                     </ul>
                 </div>
 
-                <div class="agitation-card solution-card">
+                <div class="agitation-card solution-card hidden">
                     <h3><i class="fa-solid fa-circle-check"></i> Řešení, které dává smysl</h3>
                     <ul class="feature-list">
                         <li><strong>Blesková rychlost:</strong> Čistý kód = zákazníci nečekají.</li>
@@ -173,125 +181,113 @@
             </div>
         </section>
 
-        <section id="about" class="about-section hidden">
+        <section id="about" class="about-section">
             <div class="section-header">
-                <h2>Proč to nechat na mně?</h2>
-                <p class="section-subtitle">Protože na to nebudete sami. Získáte osobní přístup a řešení, které opravdu
-                    funguje.</p>
+                <h2>Proč se vám vyplatí spolupráce?</h2>
+                <p class="section-subtitle">Nekupujete si jen kód nebo předpřipravenou šablonu. Získáváte funkční nástroj, který vám přivede nové zákazníky a ušetří čas.</p>
             </div>
 
             <div class="bento-grid">
-                <div class="bento-item bento-motto">
-                    <h3>Můj přístup</h3>
-                    <p>Netvořím jen líbivé statické weby podle šablon. Píšu čistý kód a umím postavit i komplexnější
-                        webová řešení na míru, jako jsou například rezervační systémy. Dbám na rychlost načítání a
-                        dokonalé zobrazení na všech zařízeních. Ke každému projektu přistupuji tak, jako bych ho dělal
-                        sám pro sebe.
-                    </p>
+                <div class="bento-item bento-motto hidden">
+                    <h3>Nekupujete šablonu, stavíme na míru</h3>
+                    <p>Běžné weby z "krabicových" šablon (jako WordPress) bývají pomalé, zranitelné a těžkopádné. Já tvořím weby od základů – čistým kódem. Výsledek? Web, který se bleskově načítá a dokonale funguje na každém mobilu.</p>
+                    <p>A co je hlavní – neznám slovo „nejde“. Potřebujete napojit vlastní rezervační systém, poptávkový formulář nebo specifickou kalkulačku? Naprogramuji řešení přesně podle potřeb vašeho podnikání.</p>
                 </div>
 
-                <div class="bento-item bento-stack">
-                    <h3>S čím pracuji</h3>
-                    <div class="tech-marquee">
-                        <div class="tech-marquee-content">
-                            <span><i class="fa-brands fa-html5"></i> HTML5</span>
-                            <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
-                            <span><i class="fa-brands fa-js"></i> JavaScript</span>
-                            <span><i class="fa-brands fa-php"></i> PHP</span>
-                            <span><i class="fa-solid fa-database"></i> MySQL</span>
-                            <span><i class="fa-brands fa-html5"></i> HTML5</span>
-                            <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
-                            <span><i class="fa-brands fa-js"></i> JavaScript</span>
-                            <span><i class="fa-brands fa-php"></i> PHP</span>
-                            <span><i class="fa-solid fa-database"></i> MySQL</span>
+                <div class="bento-item bento-proof hidden">
+                    <h3>Rychlost, kterou vyhledávače milují</h3>
+                    <div class="speed-score-container">
+                        <div class="score-circle">
+                            <span class="score-number">100</span>
+                            <span class="score-label">Performance</span>
+                        </div>
+                        <div class="score-text">
+                            <p>Maximální skóre v Google PageSpeed Insights.</p>
+                            <span>Rychlý web znamená lepší pozice ve vyhledávání a neodcházející návštěvníky.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bento-item bento-benefits">
-                    <h3>Osobní spolupráce</h3>
+                <div class="bento-item bento-benefits hidden">
+                    <h3>Osobní a férový přístup</h3>
                     <ul>
-                        <li><i class="fa-solid fa-handshake"></i> Komunikace 1 na 1 přímo se mnou</li>
-                        <li><i class="fa-solid fa-bolt"></i> Rychlá odezva bez zbytečné byrokracie</li>
-                        <li><i class="fa-solid fa-mobile-screen-button"></i> 100% Mobile-first design</li>
+                        <li><i class="fa-solid fa-handshake"></i> Žádní account manažeři, komunikujete přímo se mnou</li>
+                        <li><i class="fa-solid fa-bolt"></i> Blesková odezva na vaše požadavky a dotazy</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> Dlouhodobá podpora a údržba i po spuštění webu</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="process" class="process-section hidden">
-            <div class="section-header">
-                <h2>Zní to dobře? Takhle to funguje v praxi:</h2>
-                <p class="section-subtitle">Žádný chaos. Jen jasný a transparentní proces od první zprávy až po spuštění
-                    webu.</p>
-            </div>
+        <section id="process" class="process-section">
+            <div class="process-sticky-container">
+                <div class="section-header hidden">
+                    <h2>Zní to dobře? Takhle to funguje v praxi:</h2>
+                    <p class="section-subtitle">Žádný chaos. Jen jasný a transparentní proces od první zprávy až po spuštění
+                        webu.</p>
+                </div>
 
-            <div class="timeline">
-                <div class="timeline-item hidden">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-comments"></i>
+                <div class="process-slider hidden">
+                    <div class="process-tabs">
+                        <div class="process-progress-track"></div>
+                        <div class="process-progress-bar" id="process-progress" style="width: 0%;"></div>
+                        
+                        <button class="process-tab active" data-step="1">
+                            <div class="tab-icon"><i class="fa-solid fa-comments"></i></div>
+                            <span class="tab-label">Konzultace</span>
+                        </button>
+                        <button class="process-tab" data-step="2">
+                            <div class="tab-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                            <span class="tab-label">Návrh</span>
+                        </button>
+                        <button class="process-tab" data-step="3">
+                            <div class="tab-icon"><i class="fa-solid fa-code"></i></div>
+                            <span class="tab-label">Kódování</span>
+                        </button>
+                        <button class="process-tab" data-step="4">
+                            <div class="tab-icon"><i class="fa-solid fa-rocket"></i></div>
+                            <span class="tab-label">Spuštění</span>
+                        </button>
+                        <button class="process-tab" data-step="5">
+                            <div class="tab-icon"><i class="fa-solid fa-wrench"></i></div>
+                            <span class="tab-label">Údržba</span>
+                        </button>
                     </div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Krok 1</span>
-                        <h3>Výchozí konzultace</h3>
-                        <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje a jak ho
-                            nejlépe odprezentovat online.</p>
+
+                    <div class="process-content-panels">
+                        <div class="process-panel active" data-step="1">
+                            <span class="timeline-date">Krok 1</span>
+                            <h3>Výchozí konzultace</h3>
+                            <p>Ujasníme si vaše představy, cíle a požadavky. Zjistíme, co vaše podnikání potřebuje a jak ho nejlépe odprezentovat online.</p>
+                        </div>
+                        <div class="process-panel" data-step="2">
+                            <span class="timeline-date">Krok 2</span>
+                            <h3>Návrh a řešení</h3>
+                            <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování, abychom se ujistili, že jdeme správným směrem.</p>
+                        </div>
+                        <div class="process-panel" data-step="3">
+                            <span class="timeline-date">Krok 3</span>
+                            <h3>Programování</h3>
+                            <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód. Vyladím detaily a animace pro maximální zážitek.</p>
+                        </div>
+                        <div class="process-panel" data-step="4">
+                            <span class="timeline-date">Krok 4</span>
+                            <h3>Spuštění webu</h3>
+                            <p>Web důkladně otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály a přístupy.</p>
+                        </div>
+                        <div class="process-panel" data-step="5">
+                            <span class="timeline-date">Krok 5</span>
+                            <h3>Dlouhodobá údržba</h3>
+                            <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace, zálohy a případné úpravy obsahu.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item hidden">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-pen-nib"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Krok 2</span>
-                        <h3>Návrh a řešení</h3>
-                        <p>Navrhnu strukturu a vizuální styl. Představím vám funkční koncept k připomínkování, abychom
-                            se ujistili, že jdeme správným směrem.</p>
-                    </div>
+                <div class="process-cta hidden">
+                    <a href="#contact" class="cta-button">
+                        <i class="fa-solid fa-envelope"></i> Pojďme probrat váš projekt
+                    </a>
                 </div>
-
-                <div class="timeline-item hidden">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Krok 3</span>
-                        <h3>Programování</h3>
-                        <p>Oživím grafický návrh a naprogramuji plně responzivní a moderní kód. Vyladím detaily a
-                            animace pro maximální zážitek.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item hidden">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Krok 4</span>
-                        <h3>Spuštění webu</h3>
-                        <p>Web důkladně otestujeme, nasadíme na vaši doménu a předám vám veškeré potřebné materiály a
-                            přístupy.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item hidden">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-wrench"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Krok 5</span>
-                        <h3>Dlouhodobá údržba</h3>
-                        <p>Po spuštění vás v tom nenechám. Podle domluvy zajistím pravidelné aktualizace, zálohy a
-                            případné úpravy obsahu.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="process-cta hidden">
-                <a href="#contact" class="cta-button">
-                    <i class="fa-solid fa-envelope"></i> Pojďme probrat váš projekt
-                </a>
             </div>
         </section>
 
@@ -500,8 +496,8 @@
             </div>
         </main>
 
-        <section id="faq" class="faq-section hidden">
-            <div class="section-header">
+        <section id="faq" class="faq-section">
+            <div class="section-header hidden">
                 <h2>Možná vás ještě napadá pár otázek...</h2>
                 <p class="section-subtitle">Tady jsou rychlé odpovědi na to, co klienty zajímá nejčastěji.</p>
             </div>
@@ -545,9 +541,9 @@
             </div>
         </section>
 
-        <section id="contact" class="contact-section hidden">
+        <section id="contact" class="contact-section">
             <div class="contact-grid">
-                <div class="contact-text">
+                <div class="contact-text hidden">
                     <h2>Pojďme napsat další příběh. Ten váš.</h2>
                     <p class="contact-subtitle">Udělejte první krok. Napište mi, co máte v plánu, a já vám vymyslím to
                         nejlepší řešení. Úvodní konzultace je vždy <strong>zdarma</strong>.</p>
@@ -578,7 +574,7 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <form action="https://formspree.io/f/mojzlvwy" method="POST" class="contact-form" id="contactForm">
+                    <form action="https://formspree.io/f/mqazoepk" method="POST" class="contact-form hidden" id="contactForm">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name">Jméno a příjmení *</label>
@@ -628,13 +624,21 @@
                     <button class="theme-toggle" aria-label="Přepnout tmavý režim">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <button id="scroll-to-top" class="scroll-top-btn hidden-btn" aria-label="Návrat nahoru">
-                        <i class="fa-solid fa-arrow-up"></i>
-                    </button>
                 </div>
             </div>
         </footer>
     </div>
+
+    <!-- ===== MORPHING FLOATING PILL (Scroll Companion) ===== -->
+    <!-- Phase 1: HTML Injection -->
+    <!-- This pill tracks the user's scroll position and acts as a contextual CTA -->
+    <button id="floating-companion" aria-label="Přejít na další sekci">
+        <span class="fc-icon-wrap">
+            <!-- Icon is dynamically updated by main.js -->
+            <i class="fa-solid fa-arrow-down" id="fc-icon"></i>
+        </span>
+        <span class="fc-text" id="fc-text">Zjistit více</span>
+    </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"
         integrity="sha512-wC/cuAOS6h18G0O9GweZ//wBvWvGqE2OzeoNZLgO1oWkGgndA2I72o34tZ1kR3U8aJ4B0mQ1X/y+yB/lHkMWJw=="

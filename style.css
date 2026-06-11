@@ -1,6 +1,7 @@
 /* ===== ZÁKLADNÍ NASTAVENÍ A PROMĚNNÉ ===== */
 :root {
     --bg-color: #f8fafc;
+    --bg-alt-color: #ffffff; /* Alternativní barva pro světlý mód (čistě bílá) */
     --card-bg-color: #ffffff;
     --text-color: #475569;
 
@@ -23,6 +24,7 @@
 
 [data-theme="dark"] {
     --bg-color: #0f172a;
+    --bg-alt-color: #0b1120; /* Alternativní barva pro tmavý mód (ještě tmavší modrá) */
     --card-bg-color: #1e293b;
     --text-color: #94a3b8;
 
@@ -42,9 +44,66 @@
     padding: 0;
 }
 
+/* ===== DECORATIVE ORBS (Fluid Flow) ===== */
+.decorative-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow-x: hidden;
+    pointer-events: none; /* Propustí kliknutí níže */
+    z-index: -1; /* Bezpečně pod obsahem */
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.05; /* Extrémně jemné, téměř neviditelné */
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] .orb {
+    opacity: 0.03; /* V tmavém režimu ještě slabší */
+}
+
+/* Umístění orbů napříč stránkou */
+/* Orb 1: Spojuje Hero a Agitation sekci (zmenšeno dle přání) */
+.orb-1 {
+    top: 25%;
+    left: -5vw;
+    width: 40vw;
+    height: 40vw;
+    max-width: 500px;
+    max-height: 500px;
+    background: var(--primary-color);
+}
+
+/* Orb 2: Spojuje About a Process sekci */
+.orb-2 {
+    top: 45%;
+    right: -10vw;
+    width: 50vw;
+    height: 50vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: var(--primary-color-hover);
+}
+
+/* Orb 3: Spojuje Projects a Contact sekci */
+.orb-3 {
+    top: 80%;
+    left: 0;
+    width: 70vw;
+    height: 70vw;
+    max-width: 900px;
+    max-height: 900px;
+    background: var(--primary-color);
+}
+
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    max-width: 100%;
 }
 
 body {
@@ -57,6 +116,7 @@ body {
     /* Provzdušnění řádků textu */
     transition: background-color 0.3s ease, color 0.3s ease;
     /* Plynulý přechod režimů */
+    max-width: 100%;
 }
 
 body::before {
@@ -64,8 +124,8 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle at 50% 50%, rgba(12, 74, 110, 0.04) 0%, transparent 70%);
     pointer-events: none;
     z-index: -1;
@@ -603,7 +663,7 @@ body::before {
 
 @media (max-width: 768px) {
     .main-hero-heading {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Ještě menší pro lepší čitelnost na velmi úzkých displejích */
     }
     .hero-content {
         align-items: center;
@@ -615,6 +675,13 @@ body::before {
         gap: 0.5rem;
     }
     .hero-buttons {
+        flex-direction: column; /* Stack tlačítek pod sebe na mobilu */
+        width: 100%;
+        gap: 1rem;
+    }
+    .hero-buttons .hero-cta,
+    .hero-buttons .hero-secondary-btn {
+        width: 100%;
         justify-content: center;
     }
 }
@@ -909,11 +976,21 @@ body::before {
     margin-bottom: 5rem;
 }
 
+@media (min-width: 992px) {
+    .about-section {
+        min-height: calc(100vh - 80px); /* 80px je zhruba výška navigace */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+}
+
 .bento-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 900px;
+    gap: 1.25rem;
+    max-width: 950px; /* Zmenšeno pro kompaktnější vzhled */
     margin: 0 auto;
 }
 
@@ -930,22 +1007,22 @@ body::before {
 
 @media (min-width: 992px) {
     .bento-grid {
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 2fr 1fr;
         grid-template-rows: auto auto;
     }
 
     .bento-motto {
         grid-column: 1 / 2;
-        grid-row: 1 / 3;
+        grid-row: 1 / 2;
     }
 
-    .bento-stack {
+    .bento-proof {
         grid-column: 2 / 3;
         grid-row: 1 / 2;
     }
 
     .bento-benefits {
-        grid-column: 2 / 3;
+        grid-column: 1 / -1;
         grid-row: 2 / 3;
     }
 }
@@ -953,7 +1030,7 @@ body::before {
 .bento-item {
     background: var(--card-bg-color);
     border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 1.5rem; /* Zmenšeno z 2rem pro kompaktnost */
     box-shadow: 0 4px 20px var(--shadow-color);
     border: 1px solid var(--border-color);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -970,76 +1047,83 @@ body::before {
 
 .bento-item h3 {
     color: var(--primary-color);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem; /* Zmenšeno z 1.4rem */
+    margin-bottom: 0.75rem; /* Zmenšeno z 1rem */
     position: relative;
     z-index: 2;
 }
 
 .bento-motto p {
-    font-size: 1.15rem;
-    line-height: 1.8;
+    font-size: 1rem; /* Zmenšeno z 1.15rem */
+    line-height: 1.7;
     color: var(--text-color);
     position: relative;
     z-index: 2;
     margin: auto 0;
 }
 
-/* Marquee pro technologie */
-.bento-stack {
+/* Ukázka rychlosti (Google PageSpeed) */
+.bento-proof {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.tech-marquee {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    padding: 1rem 0;
-}
-
-.tech-marquee-content {
-    display: flex;
-    gap: 1.5rem;
-    white-space: nowrap;
-    animation: marquee 20s linear infinite;
-    width: max-content;
-}
-
-.tech-marquee-content:hover {
-    animation-play-state: paused;
-}
-
-.tech-marquee-content span {
+.speed-score-container {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.05rem;
-    font-weight: 500;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.score-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid #10b981; /* Tailwind emerald-500 (Google Green alternative) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+.score-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #10b981;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    font-weight: 700;
     color: var(--text-color);
-    background: rgba(12, 74, 110, 0.05);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
+    opacity: 0.7;
+    margin-top: 4px;
 }
 
-[data-theme="dark"] .tech-marquee-content span {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.tech-marquee-content span i {
+.score-text p {
+    font-weight: 700;
     color: var(--primary-color);
-    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
 }
 
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
+.score-text span {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.4;
+    display: block;
+}
 
-    100% {
-        transform: translateX(calc(-50% - 0.75rem));
+@media (max-width: 500px) {
+    .speed-score-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
 }
 
@@ -1077,6 +1161,21 @@ body::before {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+@media (min-width: 992px) {
+    .bento-benefits ul {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .bento-benefits li {
+        margin-bottom: 0;
+        flex: 1;
+        align-items: flex-start;
+    }
+}
+
 [data-theme="dark"] .bento-benefits li i {
     background: rgba(56, 189, 248, 0.15);
 }
@@ -1094,87 +1193,157 @@ body::before {
 .process-section {
     margin-bottom: 6rem;
     position: relative;
+    height: 250vh; /* Vytvoří dlouhý prostor pro scrollování */
 }
 
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding-left: 60px;
-    /* Místo pro osu na mobilu (zvětšeno pro odsunutí od okraje) */
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
+.process-sticky-container {
+    position: sticky;
     top: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--primary-color), rgba(59, 130, 246, 0.1));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Perfectly centers the widget in the viewport */
+}
+
+.process-slider {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.process-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.process-progress-track {
+    position: absolute;
+    top: 40px; /* Zarovnáno na střed ikon (1rem padding + 25px polovina 50px ikony) */
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    background: var(--border-color);
+    z-index: 0;
     border-radius: 2px;
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
-}
-
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-
-.timeline-icon {
+.process-progress-bar {
     position: absolute;
-    left: -58px;
-    /* 40px padding + 18px posun pro vycentrování na čáru */
-    top: 0;
-    width: 40px;
-    height: 40px;
-    background: var(--card-bg-color);
-    border: 3px solid var(--primary-color);
+    top: 40px;
+    left: 10%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-hover));
+    z-index: 1;
+    border-radius: 2px;
+    max-width: 80%; /* Respektuje okraje tracku */
+}
+
+.process-tab {
+    position: relative;
+    z-index: 2; /* Na vrchu nad progress barem */
+    flex: 1;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    /* Odstraněno plošné opacity, aby neprůsvítalo pozadí! */
+}
+
+.process-tab:hover {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.process-tab.active {
+    transform: translateY(-5px);
+}
+
+.tab-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg-color); /* Zcela neprůhledné, stejná barva jako karta */
+    border: 2px solid var(--border-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    z-index: 2;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    color: var(--text-color);
 }
 
-.timeline-item:hover .timeline-icon {
-    transform: scale(1.15);
+/* Útlum aplikujeme pouze na samotnou ikonu a text, nikoliv na celé tlačítko vč. pozadí */
+.tab-icon i, .tab-label {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.process-tab:hover .tab-icon i,
+.process-tab:hover .tab-label {
+    opacity: 0.8;
+}
+
+.process-tab.active .tab-icon i,
+.process-tab.active .tab-label {
+    opacity: 1;
+}
+
+.process-tab.active .tab-icon {
     background: var(--primary-color);
+    border-color: var(--primary-color);
     color: #fff;
+    box-shadow: 0 4px 15px var(--shadow-hover-color);
 }
 
-[data-theme="dark"] .timeline-item:hover .timeline-icon {
-    color: #0f172a;
+.tab-label {
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-.timeline-content {
-    background: var(--card-bg-color);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px var(--shadow-color);
-    border: 1px solid var(--border-color);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.timeline-item:hover .timeline-content {
-    transform: translateX(5px);
-    box-shadow: 0 12px 30px var(--shadow-hover-color);
-}
-
-.timeline-content h3 {
+.process-tab.active .tab-label {
     color: var(--primary-color);
-    margin-bottom: 0.75rem;
-    font-size: 1.3rem;
 }
 
-.timeline-date {
+
+
+.process-content-panels {
+    position: relative;
+    min-height: 200px; /* Zabránění skákání výšky */
+}
+
+.process-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.process-panel.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.process-panel .timeline-date {
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 600;
@@ -1187,32 +1356,60 @@ body::before {
     margin-bottom: 1rem;
 }
 
-.timeline-content p {
+.process-panel h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.process-panel p {
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.7;
     margin: 0;
 }
 
-@media (min-width: 768px) {
-    .timeline {
-        padding-left: 80px;
+/* Responsivita pro mobil - Zrušení Scroll-jackingu a přechod na vertikální kaskádu */
+@media (max-width: 767px) {
+    .process-section {
+        height: auto !important;
+        margin-bottom: 4rem;
     }
 
-    .timeline-icon {
-        left: -80px;
-        /* Zarovnání pro větší padding */
-        width: 44px;
-        height: 44px;
-        font-size: 1.2rem;
+    .process-sticky-container {
+        position: relative;
+        height: auto;
+        display: block;
     }
 
-    .timeline-content {
-        padding: 2.5rem;
+    .process-slider {
+        padding: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
     }
 
-    .timeline-content h3 {
-        font-size: 1.5rem;
+    .process-tabs {
+        display: none; /* Skryjeme navigaci tabů úplně */
+    }
+
+    .process-content-panels {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .process-panel {
+        position: relative;
+        opacity: 1 !important; /* Přepis JS */
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        background: var(--card-bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        transition: none; /* JS už neovlivňuje animace */
+        box-shadow: 0 4px 15px var(--shadow-color);
     }
 }
 
@@ -1936,9 +2133,8 @@ body::before {
     transition-delay: 500ms;
 }
 
-/* Tlačítko pro tmavý režim a Scroll To Top */
-.theme-toggle,
-.scroll-top-btn {
+/* Tlačítko pro tmavý režim */
+.theme-toggle {
     background: var(--card-bg-color);
     color: var(--primary-color);
     border: 1px solid var(--border-color);
@@ -1955,30 +2151,10 @@ body::before {
     flex-shrink: 0;
 }
 
-.theme-toggle:hover,
-.scroll-top-btn:hover {
+.theme-toggle:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 15px var(--shadow-hover-color);
     color: var(--primary-color-hover);
-}
-
-.hidden-btn {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px) scale(0.9);
-}
-
-.scroll-top-btn.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
-
-.scroll-top-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1000;
 }
 
 /* ===== NAV LOGO ===== */
@@ -2009,8 +2185,7 @@ body::before {
 
 /* ===== TECH STRIP ===== */
 .tech-strip {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
     overflow: hidden;
     padding: 0.75rem 0; /* Extrémně úzké */
     margin-top: 0;
@@ -2086,4 +2261,246 @@ body::before {
     color: var(--primary-color);
     transform: translateY(-3px);
     opacity: 1;
+}
+
+
+/* ===== MORPHING FLOATING PILL (Scroll Companion) ===== */
+/* Phase 2: Glassmorphism Styling */
+
+#floating-companion {
+    /* --- Positioning --- */
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 998; /* Below mobile menus (z-index: 100+), above content */
+
+    /* --- Layout --- */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    /* Horizontal padding creates the pill shape when text is visible */
+    padding: 0.75rem 1.25rem;
+
+    /* --- Glassmorphism (Premium feel) --- */
+    background: var(--card-bg-color);
+    /* 80% opacity so it reads as glass on any background */
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--pill-radius); /* Full pill = 100px */
+    box-shadow:
+        0 4px 20px var(--shadow-color),
+        0 1px 3px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    /* --- Typography --- */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    cursor: pointer;
+
+    /* --- Morphing transition (Phase 2 requirement) --- */
+    /* The cubic-bezier easing gives the width change a premium, springy feel */
+    transition:
+        width          0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        padding        0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        gap            0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        opacity        0.35s ease,
+        transform      0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+        box-shadow     0.3s ease,
+        background     0.4s ease;
+
+    /* Pill always stays at its intrinsic width — JS never hardcodes px widths */
+    white-space: nowrap;
+    overflow: hidden;
+    border: none;
+    outline: none;
+}
+
+/* Dark mode glass adjustments */
+[data-theme="dark"] #floating-companion {
+    background: rgba(30, 41, 59, 0.85);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.45),
+        0 1px 3px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+/* Hover: subtle lift + glow */
+#floating-companion:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 10px 30px var(--shadow-hover-color),
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    color: var(--primary-color-hover);
+}
+
+[data-theme="dark"] #floating-companion:hover {
+    box-shadow:
+        0 10px 30px rgba(96, 165, 250, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Active / click press-down micro-interaction */
+#floating-companion:active {
+    transform: translateY(-1px) scale(0.98);
+    transition-duration: 0.1s;
+}
+
+/* Icon wrapper: keeps the icon perfectly centred at all times */
+.fc-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;    /* Fixed width so pill height is stable */
+    height: 20px;
+    flex-shrink: 0;
+    font-size: 1rem;
+    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Gentle icon spin when section changes — class added/removed by JS */
+.fc-icon-wrap.fc-spin {
+    transform: rotate(360deg);
+}
+
+/* Text span: animates in/out via max-width + opacity */
+.fc-text {
+    display: inline-block;
+    max-width: 140px;         /* Enough for all Czech labels */
+    opacity: 1;
+    transition:
+        max-width  0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        opacity    0.25s ease;
+    overflow: hidden;
+}
+
+/* --- Hidden state (used for Contact section & pre-scroll) --- */
+#floating-companion.fc-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px) scale(0.88);
+}
+
+/* --- "Back to top" state (merges with scroll-to-top on Contact) --- */
+#floating-companion.fc-top-state {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+}
+
+[data-theme="dark"] #floating-companion.fc-top-state {
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.3);
+}
+
+#floating-companion.fc-top-state:hover {
+    background: var(--primary-color-hover);
+    color: #fff;
+}
+
+/* ===== PHASE 5: RESPONSIVE — MOBILE (< 768px) ===== */
+/* On small screens: hide the text label; keep only the icon in a circle */
+@media (max-width: 767px) {
+    #floating-companion {
+        /* Square padding makes it a perfect circle */
+        padding: 0.85rem;
+        gap: 0;
+        /* Move slightly higher to stay clear of browser chrome */
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    /* On mobile, text is hidden by default but smoothly animates in when .fc-expanded-mobile is added */
+    #floating-companion .fc-text {
+        max-width: 0;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        display: inline-block; /* allows transitions while keeping inline flow */
+    }
+
+    /* Temporary expanded state on mobile (triggered by JS) */
+    #floating-companion.fc-expanded-mobile {
+        padding: 0.75rem 1.25rem;
+        gap: 0.6rem;
+    }
+
+    #floating-companion.fc-expanded-mobile .fc-text {
+        max-width: 140px;
+        opacity: 1;
+    }
+
+    /* Keep the scroll-to-top aligned with the new pill position */
+    .scroll-top-btn {
+        bottom: 5rem;
+        right: 1.5rem;
+    }
+}
+
+/* ===== GLOBÁLNÍ OPTIMALIZACE PRO MOBILY (UX 100%) ===== */
+@media (max-width: 768px) {
+    /* Zmenšení obřích mezer mezi sekcemi pro rychlejší doscrollování k obsahu */
+    .agitation-section,
+    .about-section,
+    .process-section,
+    .projects-section,
+    .faq-section,
+    .contact-section {
+        margin-bottom: 3.5rem !important;
+    }
+
+    /* Zmenšení vnitřních okrajů karet pro více obsahu na obrazovce (místo původních 2.5rem) */
+    .card,
+    .bento-item,
+    .project-card,
+    .agitation-card {
+        padding: 1.5rem !important;
+    }
+
+    /* Zmenšení obřích gapů v gridech, aby obsah lépe navazoval */
+    .bento-grid,
+    .agitation-grid,
+    .projects-grid {
+        gap: 1rem !important;
+    }
+
+    /* Zmenšení obecného paddingu kontejneru pro více místa do stran */
+    .container {
+        padding: 2rem 1.25rem !important;
+    }
+
+    /* Záchrana kontaktního formuláře (aby nebyl příliš úzký kvůli vnořeným paddingům) */
+    .contact-grid {
+        padding: 1.25rem !important;
+    }
+    
+    .contact-form-wrapper {
+        padding: 1rem !important;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    /* Tlačítko u kontaktního formuláře - zabránění zalomení */
+    .submit-btn {
+        font-size: 1rem !important;
+        padding: 1rem !important;
+        white-space: nowrap;
+    }
+
+    /* Zabrání fotce hrdiny (Kryštofa) roztahovat web do strany a překrývat text */
+    .hero-character-wrapper {
+        right: -10px !important; /* Na mobilu se neschovává tolik ven */
+        bottom: -10px !important;
+    }
+    .hero-character {
+        width: 130px !important; /* Zmenšení na mobilech, aby nepřekážel */
+        left: 0 !important;
+    }
 }
