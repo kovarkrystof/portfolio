@@ -433,11 +433,15 @@ body::before {
 
 /* ===== HERO FUNNEL SEKCE ===== */
 .hero-section {
+    min-height: calc(100vh - 120px); /* Odečtení výšky hlavičky a nějaké rezervy */
+    display: flex;
+    align-items: center;
     padding: 2rem 0 4rem 0;
     margin-bottom: 2rem;
 }
 
 .hero-grid {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -2573,6 +2577,11 @@ body::before {
 
     /* Menší odsazení na mobilu - navigace je kompaktnější */
     .page-content-offset {
-        padding-top: 75px;
+        padding-top: 90px !important; /* Musí mít !important, aby přebilo obecný .container padding !important */
+    }
+
+    /* Schování tlačítka v navigaci na mobilu, aby nezabíralo místo (zůstane jen burger menu) */
+    .nav-buttons {
+        display: none;
     }
 }
