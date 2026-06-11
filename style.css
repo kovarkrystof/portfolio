@@ -158,22 +158,33 @@ body::before {
 }
 
 /* ===== NAVIGACE ===== */
+.sticky-nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    pointer-events: none; /* Umožní klikat skrz průhledné části wrapperu na obsah pod ním */
+}
+
+.sticky-nav-wrapper .container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 0 !important;
+}
+
 .main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    margin-bottom: 2rem;
+    padding: 0.5rem 1.5rem; /* Zmenšené vnitřní okraje navigace */
+    margin-bottom: 0; 
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: var(--pill-radius);
-    /* Plně oblé pill zakončení */
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 15px var(--shadow-color);
-    position: sticky;
-    top: 1rem;
-    z-index: 100;
+    position: relative;
+    pointer-events: auto; 
 }
 
 [data-theme="dark"] .main-nav {
@@ -181,10 +192,53 @@ body::before {
 }
 
 .nav-logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Zmenšené logo */
     font-weight: 700;
     color: var(--primary-color);
     letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+/* ---- Animovaná tečka v logu ---- */
+@keyframes dot-land {
+    0%   { transform: translateY(-8px) scale(0.5); color: var(--primary-color); opacity: 0; }
+    55%  { transform: translateY(3px) scale(1.4);  color: var(--primary-color); opacity: 1; }
+    75%  { transform: translateY(-2px) scale(0.9); color: var(--primary-color); }
+    90%  { transform: translateY(1px) scale(1.05); color: var(--primary-color); }
+    100% { transform: translateY(0) scale(1);      color: inherit; opacity: 1; }
+}
+
+@keyframes dot-bounce {
+    0%   { transform: translateY(0)    scale(1);    color: inherit; }
+    30%  { transform: translateY(-5px) scale(1.3);  color: var(--primary-color); }
+    55%  { transform: translateY(2px)  scale(0.95); color: var(--primary-color); }
+    75%  { transform: translateY(-2px) scale(1.1);  color: var(--primary-color); }
+    100% { transform: translateY(0)    scale(1);    color: inherit; }
+}
+
+.nav-dot {
+    display: inline-block;
+    color: inherit;
+    transform-origin: center bottom;
+    /* Výchozí stav – neviditelná, připravená k animaci příletu */
+    opacity: 0;
+}
+
+/* Přiletí při načtení (třída přidána Javascriptem) */
+.nav-dot.dot-animate-land {
+    animation: dot-land 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Poskočí při najetí myší na logo */
+.nav-logo:hover .nav-dot {
+    animation: dot-bounce 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Zmenšené tlačítko specificky v navigaci, aby ji nenafukovalo */
+.nav-buttons .cta-button {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+    margin-top: 0; /* Zrušení případného defaultního marginu */
 }
 
 .burger-menu {
@@ -2502,5 +2556,12 @@ body::before {
     .hero-character {
         width: 130px !important; /* Zmenšení na mobilech, aby nepřekážel */
         left: 0 !important;
+    }
+
+    /* Optimalizace mezer pro fixní navigaci na mobilu */
+    .sticky-nav-wrapper .container {
+        padding-top: 1rem !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
     }
 }
